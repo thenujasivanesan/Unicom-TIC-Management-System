@@ -59,11 +59,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bauhaus 93", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(137, 218);
+            this.label1.Location = new System.Drawing.Point(124, 214);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 45);
+            this.label1.Size = new System.Drawing.Size(156, 54);
             this.label1.TabIndex = 1;
             this.label1.Text = "LOG IN";
             // 

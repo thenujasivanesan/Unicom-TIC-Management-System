@@ -15,7 +15,7 @@ namespace Unicom_TIC_Management_System.Repositories
             {
              
                 // Create Users table
-                string createUsersTable = @"
+                string UsersTable = @"
             CREATE TABLE IF NOT EXISTS Users (
                 UserID INTEGER PRIMARY KEY AUTOINCREMENT,
                 Username TEXT NOT NULL,
@@ -24,14 +24,14 @@ namespace Unicom_TIC_Management_System.Repositories
             );";
 
                 // Create Courses table
-                string createCoursesTable = @"
+                string CoursesTable = @"
             CREATE TABLE IF NOT EXISTS Courses (
                 CourseID INTEGER PRIMARY KEY AUTOINCREMENT,
                 CourseName TEXT NOT NULL
             );";
 
                 // Create Subjects table
-                string createSubjectsTable = @"
+                string SubjectsTable = @"
             CREATE TABLE IF NOT EXISTS Subjects (
                 SubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
                 SubjectName TEXT NOT NULL,
@@ -40,7 +40,7 @@ namespace Unicom_TIC_Management_System.Repositories
             );";
 
                 // Create Students table
-                string createStudentsTable = @"
+                string StudentsTable = @"
             CREATE TABLE IF NOT EXISTS Students (
                 StudentID INTEGER PRIMARY KEY AUTOINCREMENT,
                 Name TEXT NOT NULL,
@@ -49,7 +49,7 @@ namespace Unicom_TIC_Management_System.Repositories
             );";
 
                 // Create Exams table
-                string createExamsTable = @"
+                string ExamsTable = @"
             CREATE TABLE IF NOT EXISTS Exams (
                 ExamID INTEGER PRIMARY KEY AUTOINCREMENT,
                 ExamName TEXT NOT NULL,
@@ -58,7 +58,7 @@ namespace Unicom_TIC_Management_System.Repositories
             );";
 
                 // Create Marks table
-                string createMarksTable = @"
+                string MarksTable = @"
             CREATE TABLE IF NOT EXISTS Marks (
                 MarkID INTEGER PRIMARY KEY AUTOINCREMENT,
                 StudentID INTEGER,
@@ -69,7 +69,7 @@ namespace Unicom_TIC_Management_System.Repositories
             );";
 
                 // Create Rooms table
-                string createRoomsTable = @"
+                string RoomsTable = @"
             CREATE TABLE IF NOT EXISTS Rooms (
                 RoomID INTEGER PRIMARY KEY AUTOINCREMENT,
                 RoomName TEXT NOT NULL,
@@ -77,14 +77,14 @@ namespace Unicom_TIC_Management_System.Repositories
             );";
 
                 // Create TimeSlots table
-                string createTimeSlotsTable = @"
+                string TimeSlotsTable = @"
             CREATE TABLE IF NOT EXISTS TimeSlots (
                 TimeSlotID INTEGER PRIMARY KEY AUTOINCREMENT,
                 TimeSlot TEXT NOT NULL
             );";
 
                 // Create Timetables table
-                string createTimetablesTable = @"
+                string TimetablesTable = @"
             CREATE TABLE IF NOT EXISTS Timetables (
                 TimetableID INTEGER PRIMARY KEY AUTOINCREMENT,
                 SubjectID INTEGER,
@@ -96,7 +96,7 @@ namespace Unicom_TIC_Management_System.Repositories
             );";
 
                 // Create student_subjects table
-                string createStudentSubjectsTable = @"
+                string StudentSubjectsTable = @"
             CREATE TABLE IF NOT EXISTS student_subjects (
                 StudentSubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
                 StudentID INTEGER,
@@ -106,7 +106,7 @@ namespace Unicom_TIC_Management_System.Repositories
             );";
 
                 // Create lecturer_subjects table
-                string createLecturerSubjectsTable = @"
+                string LecturerSubjectsTable = @"
             CREATE TABLE IF NOT EXISTS lecturer_subjects (
                 LecturerSubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
                 LecturerID INTEGER,
@@ -126,17 +126,17 @@ namespace Unicom_TIC_Management_System.Repositories
                 //cmd.executenonquery();
 
 
-                ExecuteNonQuery(dbconn, createUsersTable);
-                ExecuteNonQuery(dbconn, createCoursesTable);
-                ExecuteNonQuery(dbconn, createSubjectsTable);
-                ExecuteNonQuery(dbconn, createStudentsTable);
-                ExecuteNonQuery(dbconn, createExamsTable);
-                ExecuteNonQuery(dbconn, createMarksTable);
-                ExecuteNonQuery(dbconn, createRoomsTable);
-                ExecuteNonQuery(dbconn, createTimeSlotsTable);
-                ExecuteNonQuery(dbconn, createTimetablesTable);
-                ExecuteNonQuery(dbconn, createStudentSubjectsTable);
-                ExecuteNonQuery(dbconn, createLecturerSubjectsTable);
+                ExecuteNonQuery(dbconn, UsersTable);
+                ExecuteNonQuery(dbconn, CoursesTable);
+                ExecuteNonQuery(dbconn, SubjectsTable);
+                ExecuteNonQuery(dbconn, StudentsTable);
+                ExecuteNonQuery(dbconn, ExamsTable);
+                ExecuteNonQuery(dbconn, MarksTable);
+                ExecuteNonQuery(dbconn, RoomsTable);
+                ExecuteNonQuery(dbconn, TimeSlotsTable);
+                ExecuteNonQuery(dbconn, TimetablesTable);
+                ExecuteNonQuery(dbconn, StudentSubjectsTable);
+                ExecuteNonQuery(dbconn, LecturerSubjectsTable);
                 
             }
         }
