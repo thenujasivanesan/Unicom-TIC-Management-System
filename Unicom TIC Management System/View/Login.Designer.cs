@@ -36,10 +36,10 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.txtUsername2 = new System.Windows.Forms.TextBox();
+            this.txtPassword2 = new System.Windows.Forms.TextBox();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.chkShowPassword2 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -123,49 +123,52 @@
             this.panel2.Size = new System.Drawing.Size(304, 1);
             this.panel2.TabIndex = 4;
             // 
-            // textBox1
+            // txtUsername2
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(93, 308);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(261, 22);
-            this.textBox1.TabIndex = 5;
+            this.txtUsername2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtUsername2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtUsername2.Location = new System.Drawing.Point(93, 308);
+            this.txtUsername2.Multiline = true;
+            this.txtUsername2.Name = "txtUsername2";
+            this.txtUsername2.Size = new System.Drawing.Size(261, 22);
+            this.txtUsername2.TabIndex = 5;
             // 
-            // textBox2
+            // txtPassword2
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(92, 384);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(261, 22);
-            this.textBox2.TabIndex = 5;
+            this.txtPassword2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtPassword2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPassword2.Location = new System.Drawing.Point(92, 384);
+            this.txtPassword2.Multiline = true;
+            this.txtPassword2.Name = "txtPassword2";
+            this.txtPassword2.PasswordChar = '*';
+            this.txtPassword2.Size = new System.Drawing.Size(261, 22);
+            this.txtPassword2.TabIndex = 5;
             // 
-            // button1
+            // btnLogin
             // 
-            this.button1.BackColor = System.Drawing.Color.Gray;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Window;
-            this.button1.Location = new System.Drawing.Point(50, 448);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(304, 35);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "LOG IN";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnLogin.BackColor = System.Drawing.Color.Gray;
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnLogin.Location = new System.Drawing.Point(50, 448);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(304, 35);
+            this.btnLogin.TabIndex = 6;
+            this.btnLogin.Text = "LOG IN";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.button1_Click);
             // 
-            // checkBox1
+            // chkShowPassword2
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.checkBox1.Location = new System.Drawing.Point(229, 419);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(125, 20);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Show Password";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkShowPassword2.AutoSize = true;
+            this.chkShowPassword2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkShowPassword2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.chkShowPassword2.Location = new System.Drawing.Point(229, 419);
+            this.chkShowPassword2.Name = "chkShowPassword2";
+            this.chkShowPassword2.Size = new System.Drawing.Size(125, 20);
+            this.chkShowPassword2.TabIndex = 7;
+            this.chkShowPassword2.Text = "Show Password";
+            this.chkShowPassword2.UseVisualStyleBackColor = true;
+            this.chkShowPassword2.CheckedChanged += new System.EventHandler(this.chkShowPassword2_CheckedChanged);
             // 
             // button2
             // 
@@ -178,18 +181,19 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "CLEAR";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(389, 596);
+            this.ClientSize = new System.Drawing.Size(419, 620);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.chkShowPassword2);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.txtPassword2);
+            this.Controls.Add(this.txtUsername2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
@@ -220,10 +224,10 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox txtUsername2;
+        private System.Windows.Forms.TextBox txtPassword2;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.CheckBox chkShowPassword2;
         private System.Windows.Forms.Button button2;
     }
 }

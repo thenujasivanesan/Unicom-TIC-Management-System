@@ -8,5 +8,6 @@ namespace Unicom_TIC_Management_System.Models
 {
     internal class Course
     {
+
     }
 }

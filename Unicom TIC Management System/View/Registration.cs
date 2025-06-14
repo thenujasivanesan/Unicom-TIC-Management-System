@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unicom_TIC_Management_System.Controllers;
+using Unicom_TIC_Management_System.Models;
 
 namespace Unicom_TIC_Management_System.View
 {
@@ -20,6 +22,80 @@ namespace Unicom_TIC_Management_System.View
         private void Registration_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text;
+            string confirmPassword = txtConfirmPassword.Text;
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
+            {
+                MessageBox.Show("Please fill all fields");
+                return;
+            }
+
+            if (password != confirmPassword)
+            {
+                MessageBox.Show("Passwords do not match");
+                return;
+            }
+
+            var user = new User
+            {
+                Username = username,
+                Password = password,
+                Role = "Admin" // First-run register is always Admin
+            };
+
+            var controller = new RegisterController();
+            bool success = controller.Register(user);
+
+            if (success)
+            {
+                MessageBox.Show("Registration successful! Please login.");
+                this.Hide();
+                new Login().Show();
+            }
+            else
+            {
+                MessageBox.Show("Registration failed. Username might already exist.");
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowPassword.Checked)
+            {
+                txtPassword.PasswordChar = '\0'; // Remove masking
+                txtConfirmPassword.PasswordChar = '\0';  // show confirm password
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*';  // Mask again
+                txtConfirmPassword.PasswordChar = '*';   // hide confirm password
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Clear all text fields
+            txtUsername.Clear();
+            txtPassword.Clear();
+            txtConfirmPassword.Clear();
+
+            // Uncheck the show password box
+            chkShowPassword.Checked = false;
+
+            // Reset password masking (if you're using PasswordChar)
+            txtPassword.PasswordChar = '*';
+            txtConfirmPassword.PasswordChar = '*';
+
+            
+
+            // Optionally set focus back to username field
+            txtUsername.Focus();
         }
     }
 }

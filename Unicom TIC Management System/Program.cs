@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
+using Unicom_TIC_Management_System.Controllers;
 using Unicom_TIC_Management_System.Repositories;
+using Unicom_TIC_Management_System.View;
 
 namespace Unicom_TIC_Management_System
 {
@@ -19,6 +22,20 @@ namespace Unicom_TIC_Management_System
             Application.SetCompatibleTextRenderingDefault(false);
 
             DatabaseManager.InitializeDatabase();
+
+
+            // Check if an Admin is already registered
+            bool isAdminExists = DatabaseChecker.IsAdminRegistered();
+
+            if (isAdminExists)
+            {
+                Application.Run(new Login()); // Show Login form
+            }
+            else
+            {
+                Application.Run(new Registration()); // First-time: show Admin registration
+            }
         }
+    
     }
 }

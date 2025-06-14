@@ -17,7 +17,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 // Create Users table
                 string UsersTable = @"
             CREATE TABLE IF NOT EXISTS Users (
-                UserID INTEGER PRIMARY KEY AUTOINCREMENT,
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Username TEXT NOT NULL,
                 Password TEXT NOT NULL,
                 Role TEXT NOT NULL
@@ -115,7 +115,20 @@ namespace Unicom_TIC_Management_System.Repositories
                 FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID)
             );";
 
-              
+                // Create Lecturers table
+                string LecturersTable = @"
+            CREATE TABLE IF NOT EXISTS Lecturers (
+                LecturerID INTEGER PRIMARY KEY AUTOINCREMENT,
+                UserID INTEGER,
+                Name TEXT NOT NULL,
+                Email TEXT,
+                FOREIGN KEY (UserID) REFERENCES Users(UserID)
+            );";
+                            
+
+
+
+
 
                 // Execute the SQL commands to create tables
 
@@ -137,7 +150,8 @@ namespace Unicom_TIC_Management_System.Repositories
                 ExecuteNonQuery(dbconn, TimetablesTable);
                 ExecuteNonQuery(dbconn, StudentSubjectsTable);
                 ExecuteNonQuery(dbconn, LecturerSubjectsTable);
-                
+                ExecuteNonQuery(dbconn, LecturersTable);
+
             }
         }
 
@@ -148,5 +162,23 @@ namespace Unicom_TIC_Management_System.Repositories
                 cmd.ExecuteNonQuery();
             }
         }
+
+
+        /*
+        public static bool IsAdminRegistered()
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                string query = "SELECT COUNT(*) FROM Users WHERE Role = 'Admin'";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    long count = (long)cmd.ExecuteScalar();
+                    return count > 0;   
+                }
+            }
+        } */
+
+
     }
 }
+       
