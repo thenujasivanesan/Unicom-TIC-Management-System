@@ -68,33 +68,33 @@ namespace Unicom_TIC_Management_System.View
         {
             if (chkShowPassword.Checked)
             {
-                txtPassword.PasswordChar = '\0'; // Remove masking
-                txtConfirmPassword.PasswordChar = '\0';  // show confirm password
+                txtPassword.PasswordChar = '\0'; // Removing masking
+                txtConfirmPassword.PasswordChar = '\0';  // showing confirm password
             }
             else
             {
-                txtPassword.PasswordChar = '*';  // Mask again
-                txtConfirmPassword.PasswordChar = '*';   // hide confirm password
+                txtPassword.PasswordChar = '*';  // Masking again
+                txtConfirmPassword.PasswordChar = '*';   // hiding confirm password
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Clear all text fields
+            // Clearing all text fields
             txtUsername.Clear();
             txtPassword.Clear();
             txtConfirmPassword.Clear();
 
-            // Uncheck the show password box
+            // Unchecking the show password box
             chkShowPassword.Checked = false;
 
-            // Reset password masking (if you're using PasswordChar)
+            // Reseting password masking 
             txtPassword.PasswordChar = '*';
             txtConfirmPassword.PasswordChar = '*';
 
             
 
-            // Optionally set focus back to username field
+            // setting focus back to username field
             txtUsername.Focus();
         }
     }

@@ -33,7 +33,7 @@ namespace Unicom_TIC_Management_System.View
             {
                 MessageBox.Show("Login Successful!");
 
-                this.Hide(); // Hide Login Form
+                this.Hide(); // Hiding Login Form
 
                 switch (role)
                 {
@@ -55,18 +55,18 @@ namespace Unicom_TIC_Management_System.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Clear input fields
+            // Clearing input fields
             txtUsername2.Clear();
             txtPassword2.Clear();
 
-            // Uncheck "Show Password" checkbox
+            // Unchecking "Show Password" checkbox
             chkShowPassword2.Checked = false;
 
-            // Reset password hiding
-            txtPassword2.PasswordChar = '*'; // If using PasswordChar
+            // Reseting password hiding
+            txtPassword2.PasswordChar = '*'; 
 
 
-            // Set focus back to Username
+            // Setting focus back to Username
             txtUsername2.Focus();
 
         }
@@ -75,11 +75,11 @@ namespace Unicom_TIC_Management_System.View
         {
             if (chkShowPassword2.Checked)
             {
-                txtPassword2.PasswordChar = '\0'; // Show actual password
+                txtPassword2.PasswordChar = '\0'; // Showing actual password
             }
             else
             {
-                txtPassword2.PasswordChar = '*';  // Mask it again
+                txtPassword2.PasswordChar = '*';  // Masking it 
             }
         }
     }

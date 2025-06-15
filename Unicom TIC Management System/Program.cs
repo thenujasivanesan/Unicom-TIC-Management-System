@@ -24,16 +24,16 @@ namespace Unicom_TIC_Management_System
             DatabaseManager.InitializeDatabase();
 
 
-            // Check if an Admin is already registered
+            // Checking if an Admin is already registered
             bool isAdminExists = DatabaseChecker.IsAdminRegistered();
 
             if (isAdminExists)
             {
-                Application.Run(new Login()); // Show Login form
+                Application.Run(new Login()); // Showing Login form
             }
             else
             {
-                Application.Run(new Registration()); // First-time: show Admin registration
+                Application.Run(new Registration()); // First time show Admin registration
             }
         }
     

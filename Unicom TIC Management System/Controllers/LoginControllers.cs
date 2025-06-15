@@ -21,7 +21,7 @@ namespace Unicom_TIC_Management_System.Controllers
                 cmd.Parameters.AddWithValue("@p", password);
                 var result = cmd.ExecuteScalar();
 
-                return result?.ToString(); // Returns "Admin", "Student", etc. or null
+                return result?.ToString(); 
             }
         }
 

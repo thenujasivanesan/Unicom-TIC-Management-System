@@ -17,7 +17,7 @@ namespace Unicom_TIC_Management_System.Controllers
             {
                 var cmd = new SQLiteCommand("INSERT INTO Users (Username, Password, Role) VALUES (@u, @p, @r)", conn);
                 cmd.Parameters.AddWithValue("@u", user.Username);
-                cmd.Parameters.AddWithValue("@p", user.Password); // In real apps, hash this
+                cmd.Parameters.AddWithValue("@p", user.Password); 
                 cmd.Parameters.AddWithValue("@r", user.Role);
 
                 try
