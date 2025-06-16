@@ -36,5 +36,54 @@ namespace Unicom_TIC_Management_System.View
         {
             LoadControlInPanel(new AdminHomeControl());
         }
+
+        private void LoadUserControl(UserControl control)
+        {
+            panelMainContent.Controls.Clear();          // Remove old content
+            control.Dock = DockStyle.Fill;       // Fill the panel
+            panelMainContent.Controls.Add(control);     // Add new content
+        }
+
+        private void btnManageUsers_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new UserManagementControl());
+        }
+
+        private void btnManageCourses_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new CourseManagementControl());
+        }
+
+        private void btnManageSubjects_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new SubjectManagementControl());
+        }
+
+        private void btnManageStudents_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new StudentManagementControl());
+
+        }
+
+        private void btnManageExams_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new ExamManagementControl());
+
+        }
+
+        private void btnManageMarks_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new MarksManagementControl());
+        }
+
+        private void btnManageRooms_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new RoomsManagementControl());
+        }
+
+        private void btnManageTimetable_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new TimetableManagementControl());
+        }
     }
 }

@@ -42,10 +42,16 @@ namespace Unicom_TIC_Management_System.Repositories
                 // Create Students table
                 string StudentsTable = @"
             CREATE TABLE IF NOT EXISTS Students (
-                StudentID INTEGER PRIMARY KEY AUTOINCREMENT,
-                Name TEXT NOT NULL,
-                CourseID INTEGER,
-                FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+                StudentId INTEGER PRIMARY KEY AUTOINCREMENT,
+                FirstName TEXT NOT NULL,
+                LastName TEXT NOT NULL,
+                Gender TEXT NOT NULL,
+                DateOfBirth TEXT NOT NULL,
+                Contact TEXT,
+                Email TEXT,
+                Address TEXT,
+                CourseId INTEGER NOT NULL,
+                FOREIGN KEY (CourseId) REFERENCES Courses(CourseId)
             );";
 
                 // Create Exams table

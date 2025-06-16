@@ -23,5 +23,7 @@ namespace Unicom_TIC_Management_System.View
             lblTotalLecturers.Text = "Total Lecturers: 12";
             lblTotalStaff.Text = "Total Staff: 5";
         }
+
+
     }
 }
