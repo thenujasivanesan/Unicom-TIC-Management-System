@@ -44,9 +44,9 @@
             this.panelTotalStudents.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelTotalStudents.Controls.Add(this.lblTotalStudents);
             this.panelTotalStudents.Location = new System.Drawing.Point(232, 11);
-            this.panelTotalStudents.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelTotalStudents.Margin = new System.Windows.Forms.Padding(2);
             this.panelTotalStudents.Name = "panelTotalStudents";
-            this.panelTotalStudents.Size = new System.Drawing.Size(218, 92);
+            this.panelTotalStudents.Size = new System.Drawing.Size(264, 92);
             this.panelTotalStudents.TabIndex = 0;
             // 
             // lblTotalStudents
@@ -66,9 +66,9 @@
             this.panelTotalLecturers.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelTotalLecturers.Controls.Add(this.lblTotalLecturers);
             this.panelTotalLecturers.Location = new System.Drawing.Point(232, 162);
-            this.panelTotalLecturers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelTotalLecturers.Margin = new System.Windows.Forms.Padding(2);
             this.panelTotalLecturers.Name = "panelTotalLecturers";
-            this.panelTotalLecturers.Size = new System.Drawing.Size(218, 92);
+            this.panelTotalLecturers.Size = new System.Drawing.Size(264, 92);
             this.panelTotalLecturers.TabIndex = 0;
             // 
             // lblTotalLecturers
@@ -88,9 +88,9 @@
             this.panelTotalStaff.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelTotalStaff.Controls.Add(this.lblTotalStaff);
             this.panelTotalStaff.Location = new System.Drawing.Point(232, 317);
-            this.panelTotalStaff.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelTotalStaff.Margin = new System.Windows.Forms.Padding(2);
             this.panelTotalStaff.Name = "panelTotalStaff";
-            this.panelTotalStaff.Size = new System.Drawing.Size(218, 92);
+            this.panelTotalStaff.Size = new System.Drawing.Size(264, 92);
             this.panelTotalStaff.TabIndex = 0;
             // 
             // lblTotalStaff
@@ -112,9 +112,9 @@
             this.Controls.Add(this.panelTotalStaff);
             this.Controls.Add(this.panelTotalLecturers);
             this.Controls.Add(this.panelTotalStudents);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AdminHomeControl";
-            this.Size = new System.Drawing.Size(643, 508);
+            this.Size = new System.Drawing.Size(629, 509);
             this.Load += new System.EventHandler(this.AdminHomeControl_Load);
             this.panelTotalStudents.ResumeLayout(false);
             this.panelTotalStudents.PerformLayout();
