@@ -169,6 +169,7 @@
     <EmbeddedResource Include="View\UserManagementControl.resx">
       <DependentUpon>UserManagementControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\umsDB.db" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

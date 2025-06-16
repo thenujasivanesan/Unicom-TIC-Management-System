@@ -16,5 +16,10 @@ namespace Unicom_TIC_Management_System.View
         {
             InitializeComponent();
         }
+
+        private void UserManagementControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
