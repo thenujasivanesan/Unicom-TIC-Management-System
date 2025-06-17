@@ -8,29 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unicom_TIC_Management_System.Models;
 using Unicom_TIC_Management_System.Repositories;
 
 namespace Unicom_TIC_Management_System.View
 {
-    public partial class StudentDashboard : Form
+    public partial class MarksViewerControl : UserControl
     {
-        
-
-        public StudentDashboard()
+        public MarksViewerControl()
         {
             InitializeComponent();
-            
         }
 
-        private void btnViewMarks_Click(object sender, EventArgs e)
-        {
-            panelContent.Controls.Clear();
-            MarksViewerControl mvc = new MarksViewerControl();
-            panelContent.Controls.Add(mvc);
-            mvc.Dock = DockStyle.Fill;
-        }
-
-        private void StudentDashboard_Load(object sender, EventArgs e)
+        private void MarksViewerControl_Load(object sender, EventArgs e)
         {
             
         }

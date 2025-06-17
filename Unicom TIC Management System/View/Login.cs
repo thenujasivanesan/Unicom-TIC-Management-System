@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unicom_TIC_Management_System.Controllers;
+using Unicom_TIC_Management_System.Models;
 using Unicom_TIC_Management_System.Repositories;
 
 namespace Unicom_TIC_Management_System.View
@@ -31,6 +32,8 @@ namespace Unicom_TIC_Management_System.View
             }
             else
             {
+              
+
                 MessageBox.Show("Login Successful!");
 
                 this.Hide(); // Hiding Login Form
@@ -51,6 +54,7 @@ namespace Unicom_TIC_Management_System.View
                         break;
                 }
             }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -81,6 +85,11 @@ namespace Unicom_TIC_Management_System.View
             {
                 txtPassword2.PasswordChar = '*';  // Masking it 
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

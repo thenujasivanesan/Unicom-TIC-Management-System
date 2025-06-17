@@ -26,6 +26,18 @@ namespace Unicom_TIC_Management_System.Controllers
         }
 
 
+        /*public int GetUserIdByUsername(string username)
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                var cmd = new SQLiteCommand("SELECT Id FROM Users WHERE Username = @u", conn);
+                cmd.Parameters.AddWithValue("@u", username);
+                var result = cmd.ExecuteScalar();
+                return result != null ? Convert.ToInt32(result) : 0;
+            }
+        }   */
+
+
 
     }
 }

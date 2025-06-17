@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unicom_TIC_Management_System.Controllers;
+using Unicom_TIC_Management_System.Models;
 
 namespace Unicom_TIC_Management_System.View
 {
@@ -15,6 +17,105 @@ namespace Unicom_TIC_Management_System.View
         public TimetableManagementControl()
         {
             InitializeComponent();
+
+        }
+
+        private void TimetableManagementControl_Load(object sender, EventArgs e)
+        {
+            LoadSubjects();
+            LoadRooms();
+            LoadTimetables();
+            
+        }
+
+        private void LoadSubjects()
+        {
+            cmbSubject.DataSource = SubjectController.GetAllSubjects(); // Already working
+            cmbSubject.DisplayMember = "SubjectName";
+            cmbSubject.ValueMember = "SubjectID";
+        }
+
+        private void LoadRooms()
+        {
+            cmbRoom.DataSource = RoomController.GetAllRooms(); // Already working
+            cmbRoom.DisplayMember = "RoomName";
+            cmbRoom.ValueMember = "RoomID";
+        }
+
+        private void LoadTimetables()
+        {
+            dgvTimetable.DataSource = null;
+            dgvTimetable.DataSource = TimetableController.GetAllTimetables();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var timetable = new Timetable
+            {
+                SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
+                RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
+                TimeSlot = txtTimeSlot.Text.Trim()
+            };
+
+            TimetableController.AddTimetable(timetable);
+            LoadTimetables();
+            ClearFields();
+        }
+
+
+        private void dgvTimetable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var row = dgvTimetable.Rows[e.RowIndex];
+                cmbSubject.Text = row.Cells["SubjectName"].Value.ToString();
+                cmbRoom.Text = row.Cells["RoomName"].Value.ToString();
+                txtTimeSlot.Text = row.Cells["TimeSlot"].Value.ToString();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dgvTimetable.SelectedRows.Count > 0)
+            {
+                var timetable = new Timetable
+                {
+                    TimetableID = Convert.ToInt32(dgvTimetable.SelectedRows[0].Cells["TimetableID"].Value),
+                    SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
+                    RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
+                    TimeSlot = txtTimeSlot.Text.Trim()
+                };
+
+                TimetableController.UpdateTimetable(timetable);
+                LoadTimetables();
+                ClearFields();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvTimetable.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(dgvTimetable.SelectedRows[0].Cells["TimetableID"].Value);
+                TimetableController.DeleteTimetable(id);
+                LoadTimetables();
+                ClearFields();
+            }
+        }
+
+        
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+        }
+
+
+        private void ClearFields()
+        {
+            cmbSubject.SelectedIndex = -1;
+            cmbRoom.SelectedIndex = -1;
+            txtTimeSlot.Text = "";
         }
     }
 }

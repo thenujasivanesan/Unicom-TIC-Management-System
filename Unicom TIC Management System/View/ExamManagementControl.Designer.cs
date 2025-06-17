@@ -81,6 +81,7 @@
             this.btnAddExam.TabIndex = 3;
             this.btnAddExam.Text = "Add Exam";
             this.btnAddExam.UseVisualStyleBackColor = true;
+            this.btnAddExam.Click += new System.EventHandler(this.btnAddExam_Click);
             // 
             // btnUpdateExam
             // 
@@ -90,6 +91,7 @@
             this.btnUpdateExam.TabIndex = 4;
             this.btnUpdateExam.Text = "Update Exam";
             this.btnUpdateExam.UseVisualStyleBackColor = true;
+            this.btnUpdateExam.Click += new System.EventHandler(this.btnUpdateExam_Click);
             // 
             // btnDeleteExam
             // 
@@ -99,6 +101,7 @@
             this.btnDeleteExam.TabIndex = 4;
             this.btnDeleteExam.Text = "Delete Exam";
             this.btnDeleteExam.UseVisualStyleBackColor = true;
+            this.btnDeleteExam.Click += new System.EventHandler(this.btnDeleteExam_Click);
             // 
             // btnClearExam
             // 
@@ -108,6 +111,7 @@
             this.btnClearExam.TabIndex = 4;
             this.btnClearExam.Text = "Clear";
             this.btnClearExam.UseVisualStyleBackColor = true;
+            this.btnClearExam.Click += new System.EventHandler(this.btnClearExam_Click);
             // 
             // dgvExams
             // 
@@ -121,6 +125,7 @@
             this.dgvExams.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvExams.Size = new System.Drawing.Size(716, 341);
             this.dgvExams.TabIndex = 5;
+            this.dgvExams.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExams_CellClick);
             // 
             // ExamManagementControl
             // 
@@ -137,6 +142,7 @@
             this.Controls.Add(this.lblExamName);
             this.Name = "ExamManagementControl";
             this.Size = new System.Drawing.Size(839, 626);
+            this.Load += new System.EventHandler(this.ExamManagementControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvExams)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

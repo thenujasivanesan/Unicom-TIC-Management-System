@@ -86,18 +86,18 @@ namespace Unicom_TIC_Management_System.Repositories
                 string TimeSlotsTable = @"
             CREATE TABLE IF NOT EXISTS TimeSlots (
                 TimeSlotID INTEGER PRIMARY KEY AUTOINCREMENT,
-                TimeSlot TEXT NOT NULL
+                StartTime TEXT NOT NULL,
+                EndTime TEXT NOT NULL
             );";
 
                 // Create Timetables table
                 string TimetablesTable = @"
             CREATE TABLE IF NOT EXISTS Timetables (
                 TimetableID INTEGER PRIMARY KEY AUTOINCREMENT,
-                SubjectID INTEGER,
-                TimeSlotID INTEGER,
-                RoomID INTEGER,
+                SubjectID INTEGER NOT NULL,
+                RoomID INTEGER NOT NULL,
+                TimeSlot TEXT NOT NULL,
                 FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID),
-                FOREIGN KEY (TimeSlotID) REFERENCES TimeSlots(TimeSlotID),
                 FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID)
             );";
 

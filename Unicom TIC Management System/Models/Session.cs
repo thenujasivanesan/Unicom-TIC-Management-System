@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Unicom_TIC_Management_System.Models
 {
-    internal class Exam
+    public static class Session
     {
-        public int ExamId { get; set; }
-        public string ExamName { get; set; }
-        public int SubjectId { get; set; }
+        
     }
 }
