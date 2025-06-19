@@ -16,13 +16,31 @@ namespace Unicom_TIC_Management_System.View
 {
     public partial class ExamManagementControl : UserControl
     {
-        public ExamManagementControl()
+        private int userId;
+        private string role;
+
+        public ExamManagementControl(int userId, string role)
         {
             InitializeComponent();
+
+            this.userId = userId;
+            this.role = role;
         }
 
         private void ExamManagementControl_Load(object sender, EventArgs e)
         {
+            if (role == "Student" || role == "Lecturer")
+            {
+                // View-only mode: hide editing controls
+                btnAddExam.Visible = false;
+                btnUpdateExam.Visible = false;
+                btnDeleteExam.Visible = false;
+                btnClearExam.Visible = false;
+
+                cmbSubject.Enabled = false;
+                txtExamName.ReadOnly = true;
+            }
+
             LoadSubjects();
             LoadExams();
         }

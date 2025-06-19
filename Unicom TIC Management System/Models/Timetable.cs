@@ -12,5 +12,6 @@ namespace Unicom_TIC_Management_System.Models
         public int SubjectID { get; set; }
         public int RoomID { get; set; }
         public string TimeSlot { get; set; }
+        public string Date { get; set; }
     }
 }

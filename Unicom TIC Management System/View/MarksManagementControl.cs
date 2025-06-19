@@ -30,10 +30,10 @@ namespace Unicom_TIC_Management_System.View
 
         private void MarksManagementControl_Load(object sender, EventArgs e)
         {
-            LoadStudents();
-            LoadExams();
+            //LoadStudents();
+            //LoadExams();
             
-            LoadSubjects();
+            //LoadSubjects();
 
             if (role == "Student")
             {
@@ -56,6 +56,9 @@ namespace Unicom_TIC_Management_System.View
             }
             else
             {
+                LoadStudents();
+                LoadExams();
+                LoadSubjects();
                 LoadMarks();
             }
         

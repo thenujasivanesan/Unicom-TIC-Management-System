@@ -35,7 +35,7 @@ namespace Unicom_TIC_Management_System.View
             {
                 MessageBox.Show("Login successful!");
 
-                // ✅ Pass userId and role to AdminDashboard
+                // Passing userId and role to AdminDashboard
                 AdminDashboard dashboard = new AdminDashboard(loginInfo.UserId, loginInfo.Role);
                 dashboard.Show();
                 this.Hide();

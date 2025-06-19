@@ -43,15 +43,33 @@ namespace Unicom_TIC_Management_System.View
                 btnManageTimetable.Visible = true;    // View only
             }
 
-            /*
-            else if (role == "Lecturer" || role == "Staff")
+            
+            else if (role == "Lecturer")
             {
-                // Optional: Restrict based on their permissions
+
                 btnManageUsers.Visible = false;
                 btnManageCourses.Visible = false;
                 btnManageSubjects.Visible = false;
-                btnManageStudents.Visible = false;  
-            }  */
+                btnManageStudents.Visible = false;
+                btnManageRooms.Visible = false;
+                btnManageExams.Visible = false;
+                btnManageMarks.Visible = true;  
+                btnManageTimetable.Visible = true;    
+            }
+
+            else if (role == "Staff")
+            {
+
+                btnManageUsers.Visible = false;
+                btnManageCourses.Visible = false;
+                btnManageSubjects.Visible = false;
+                btnManageStudents.Visible = false;
+                btnManageRooms.Visible = false;
+                btnManageExams.Visible = true;
+                btnManageMarks.Visible = true;
+                btnManageTimetable.Visible = true;
+            }
+
         }
 
         private void panelMainContent_Paint(object sender, PaintEventArgs e)
@@ -104,7 +122,7 @@ namespace Unicom_TIC_Management_System.View
 
         private void btnManageExams_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new ExamManagementControl());
+            LoadUserControl(new ExamManagementControl(userId, role));
 
         }
 

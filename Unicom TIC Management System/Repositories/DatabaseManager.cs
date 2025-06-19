@@ -100,6 +100,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 SubjectID INTEGER NOT NULL,
                 RoomID INTEGER NOT NULL,
                 TimeSlot TEXT NOT NULL,
+                Date TEXT NOT NULL,
                 FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID),
                 FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID)
             );";

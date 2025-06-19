@@ -39,6 +39,8 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.dgvTimetable = new System.Windows.Forms.DataGridView();
             this.txtTimeSlot = new System.Windows.Forms.TextBox();
+            this.datePicker = new System.Windows.Forms.DateTimePicker();
+            this.lblDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimetable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,10 +148,29 @@
             this.txtTimeSlot.Size = new System.Drawing.Size(100, 22);
             this.txtTimeSlot.TabIndex = 6;
             // 
+            // datePicker
+            // 
+            this.datePicker.CustomFormat = "yyyy-MM-dd";
+            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePicker.Location = new System.Drawing.Point(493, 32);
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Size = new System.Drawing.Size(200, 22);
+            this.datePicker.TabIndex = 7;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(374, 37);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(36, 16);
+            this.lblDate.TabIndex = 0;
+            this.lblDate.Text = "Date";
+            // 
             // TimetableManagementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.datePicker);
             this.Controls.Add(this.txtTimeSlot);
             this.Controls.Add(this.dgvTimetable);
             this.Controls.Add(this.btnClear);
@@ -158,6 +179,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cmbRoom);
             this.Controls.Add(this.cmbSubject);
+            this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblTimeSlot);
             this.Controls.Add(this.lblRoom);
             this.Controls.Add(this.lblSubject);
@@ -183,5 +205,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.DataGridView dgvTimetable;
         private System.Windows.Forms.TextBox txtTimeSlot;
+        private System.Windows.Forms.DateTimePicker datePicker;
+        private System.Windows.Forms.Label lblDate;
     }
 }

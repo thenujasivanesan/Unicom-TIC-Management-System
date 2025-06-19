@@ -28,14 +28,14 @@ namespace Unicom_TIC_Management_System.View
 
         private void TimetableManagementControl_Load(object sender, EventArgs e)
         {
-            LoadSubjects();
-            LoadRooms();
-            LoadTimetables();
+            //LoadSubjects();
+            //LoadRooms();
+            //LoadTimetables();
 
 
 
 
-            if (role == "Student")
+            if (role == "Student" || role == "Lecturer" || role == "Staff")
             {
                 btnAdd.Visible = false;
                 btnUpdate.Visible = false;
@@ -49,8 +49,20 @@ namespace Unicom_TIC_Management_System.View
                 cmbRoom.Visible = false;
                 lblTimeSlot.Visible = false;
                 txtTimeSlot.Visible = false;
+                lblDate.Visible = false;
+                datePicker.Visible = false;
 
+                LoadTimetables();
             }
+            else 
+            {
+                LoadSubjects();
+                LoadRooms();
+                LoadTimetables();
+            }
+
+            
+
 
         }
 
@@ -72,18 +84,29 @@ namespace Unicom_TIC_Management_System.View
         {
             dgvTimetable.DataSource = null;
             dgvTimetable.DataSource = TimetableController.GetAllTimetables();
+            dgvTimetable.Columns["Date"].HeaderText = "Date";
+            dgvTimetable.Columns["Date"].DisplayIndex = 0; // show first
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (cmbSubject.SelectedIndex == -1 || cmbRoom.SelectedIndex == -1 || string.IsNullOrWhiteSpace(txtTimeSlot.Text))
+            {
+                MessageBox.Show("Please fill all fields including the date.");
+                return;
+            }
+
             var timetable = new Timetable
             {
                 SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
                 RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
-                TimeSlot = txtTimeSlot.Text.Trim()
+                TimeSlot = txtTimeSlot.Text.Trim(),
+                Date = datePicker.Value.ToString("yyyy-MM-dd")
             };
 
             TimetableController.AddTimetable(timetable);
+            MessageBox.Show("Timetable added!");
             LoadTimetables();
             ClearFields();
         }
@@ -97,6 +120,7 @@ namespace Unicom_TIC_Management_System.View
                 cmbSubject.Text = row.Cells["SubjectName"].Value.ToString();
                 cmbRoom.Text = row.Cells["RoomName"].Value.ToString();
                 txtTimeSlot.Text = row.Cells["TimeSlot"].Value.ToString();
+                datePicker.Value = DateTime.Parse(row.Cells["Date"].Value.ToString());
             }
         }
 
@@ -109,10 +133,12 @@ namespace Unicom_TIC_Management_System.View
                     TimetableID = Convert.ToInt32(dgvTimetable.SelectedRows[0].Cells["TimetableID"].Value),
                     SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
                     RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
-                    TimeSlot = txtTimeSlot.Text.Trim()
+                    TimeSlot = txtTimeSlot.Text.Trim(),
+                    Date = datePicker.Value.ToString("yyyy-MM-dd")
                 };
 
                 TimetableController.UpdateTimetable(timetable);
+                MessageBox.Show("Timetable updated!");
                 LoadTimetables();
                 ClearFields();
             }
