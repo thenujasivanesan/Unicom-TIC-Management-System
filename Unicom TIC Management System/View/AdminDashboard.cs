@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unicom_TIC_Management_System.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Unicom_TIC_Management_System.View
 {
@@ -89,7 +90,7 @@ namespace Unicom_TIC_Management_System.View
 
         private void AdminDashboard_Load(object sender, EventArgs e)
         {
-            LoadControlInPanel(new AdminHomeControl());
+            LoadControlInPanel(new AdminHomeControl(userId, role));
         }
 
         private void LoadUserControl(UserControl control)
