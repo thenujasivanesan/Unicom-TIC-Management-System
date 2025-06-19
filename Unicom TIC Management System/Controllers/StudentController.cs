@@ -16,13 +16,14 @@ namespace Unicom_TIC_Management_System.Controllers
             using (var conn = dbConfig.GetConnection())
             {
                 string query = @"INSERT INTO Students 
-                (FirstName, LastName, Gender, DateOfBirth, Contact, Email, Address, CourseId) 
+                (UserId, FirstName, LastName, Gender, DateOfBirth, Contact, Email, Address, CourseId) 
                 VALUES 
-                (@FirstName, @LastName, @Gender, @DateOfBirth, @Contact, @Email, @Address, @CourseId)";
+                (@UserId, @FirstName, @LastName, @Gender, @DateOfBirth, @Contact, @Email, @Address, @CourseId)";
 
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@FirstName", student.FirstName);
+                    cmd.Parameters.AddWithValue("@UserId", student.UserId);
                     cmd.Parameters.AddWithValue("@LastName", student.LastName);
                     cmd.Parameters.AddWithValue("@Gender", student.Gender);
                     cmd.Parameters.AddWithValue("@DateOfBirth", student.DateOfBirth.ToString("yyyy-MM-dd"));
@@ -41,6 +42,7 @@ namespace Unicom_TIC_Management_System.Controllers
             {
                 string query = @"UPDATE Students SET 
                 FirstName = @FirstName,
+                UserId = @UserId
                 LastName = @LastName,
                 Gender = @Gender,
                 DateOfBirth = @DateOfBirth,
@@ -53,6 +55,7 @@ namespace Unicom_TIC_Management_System.Controllers
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@FirstName", student.FirstName);
+                    cmd.Parameters.AddWithValue("@UserId", student.UserId);
                     cmd.Parameters.AddWithValue("@LastName", student.LastName);
                     cmd.Parameters.AddWithValue("@Gender", student.Gender);
                     cmd.Parameters.AddWithValue("@DateOfBirth", student.DateOfBirth.ToString("yyyy-MM-dd"));
@@ -95,6 +98,7 @@ namespace Unicom_TIC_Management_System.Controllers
                         list.Add(new Student
                         {
                             StudentId = Convert.ToInt32(reader["StudentId"]),
+                            UserId = Convert.ToInt32(reader["UserId"]),
                             FirstName = reader["FirstName"].ToString(),
                             LastName = reader["LastName"].ToString(),
                             Gender = reader["Gender"].ToString(),

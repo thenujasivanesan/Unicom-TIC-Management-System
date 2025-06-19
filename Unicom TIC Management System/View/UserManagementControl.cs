@@ -51,7 +51,7 @@ namespace Unicom_TIC_Management_System.View
             {
                 var user = new User
                 {
-                    Id = Convert.ToInt32(dgvUsers.SelectedRows[0].Cells["Id"].Value),
+                    UserId = Convert.ToInt32(dgvUsers.SelectedRows[0].Cells["UserId"].Value),
                     Username = txtUsername.Text.Trim(),
                     Password = txtPassword.Text,
                     Role = cmbRole.Text
@@ -67,7 +67,7 @@ namespace Unicom_TIC_Management_System.View
         {
             if (dgvUsers.SelectedRows.Count > 0)
             {
-                int id = Convert.ToInt32(dgvUsers.SelectedRows[0].Cells["Id"].Value);
+                int id = Convert.ToInt32(dgvUsers.SelectedRows[0].Cells["UserId"].Value);
                 UserController.DeleteUser(id);
                 LoadUsers();
                 ClearFields();

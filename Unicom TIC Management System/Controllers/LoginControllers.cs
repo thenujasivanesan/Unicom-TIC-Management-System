@@ -12,17 +12,29 @@ namespace Unicom_TIC_Management_System.Controllers
 {
     internal class LoginControllers
     {
-        public string Login(string username, string password)
+        public LoginInfo Login(string username, string password)
         {
             using (var conn = dbConfig.GetConnection())
             {
-                var cmd = new SQLiteCommand("SELECT Role FROM Users WHERE Username=@u AND Password=@p", conn);
+                var cmd = new SQLiteCommand("SELECT UserId, Username, Role FROM Users WHERE Username=@u AND Password=@p", conn);
                 cmd.Parameters.AddWithValue("@u", username);
                 cmd.Parameters.AddWithValue("@p", password);
-                var result = cmd.ExecuteScalar();
 
-                return result?.ToString(); 
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new LoginInfo
+                        {
+                            UserId = reader.GetInt32(0),
+                            Username = reader.GetString(1),
+                            Role = reader.GetString(2)
+                        };
+                    }
+                }
             }
+
+            return null; // Invalid credentials
         }
 
 

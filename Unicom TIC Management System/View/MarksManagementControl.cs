@@ -16,16 +16,110 @@ namespace Unicom_TIC_Management_System.View
 {
     public partial class MarksManagementControl : UserControl
     {
-        public MarksManagementControl()
+        private int userId;
+        private string role;
+
+        public MarksManagementControl(int userId , string role)
         {
             InitializeComponent();
+            cmbSubject.SelectedIndexChanged += cmbSubject_SelectedIndexChanged;
+
+            this.userId = userId;
+            this.role = role;
         }
 
         private void MarksManagementControl_Load(object sender, EventArgs e)
         {
             LoadStudents();
             LoadExams();
-            LoadMarks();
+            
+            LoadSubjects();
+
+            if (role == "Student")
+            {
+                btnAdd.Visible = false;
+                btnUpdate.Visible = false;
+                btnDelete.Visible = false;
+                btnClear.Visible = false;
+
+
+                lblStudent.Visible = false;
+                cmbStudent.Visible = false;
+                lblExam.Visible = false;
+                cmbExam.Visible = false;
+                lblSubject.Visible = false;
+                cmbSubject.Visible = false;
+                lblScore.Visible = false;
+                txtScore.Visible = false;
+
+                LoadMarksForStudent(userId);
+            }
+            else
+            {
+                LoadMarks();
+            }
+        
+        }
+
+        private void LoadMarksForStudent(int userId)
+        {
+            using (var conn = dbConfig.GetConnection())
+            {   
+
+                // Step 1: Get StudentId using UserId
+                string getStudentIdQuery = "SELECT StudentId FROM Students WHERE UserId = @userId";
+                using (var cmd = new SQLiteCommand(getStudentIdQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    var result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        int studentId = Convert.ToInt32(result);
+
+                        // Step 2: Get marks for that StudentId
+                        string getMarksQuery = @"
+                    SELECT m.Score, e.ExamName, s.SubjectName
+                    FROM Marks m
+                    JOIN Exams e ON m.ExamId = e.ExamId
+                    JOIN Subjects s ON e.SubjectId = s.SubjectId
+                    WHERE m.StudentId = @studentId";
+
+                        using (var marksCmd = new SQLiteCommand(getMarksQuery, conn))
+                        {
+                            marksCmd.Parameters.AddWithValue("@studentId", studentId);
+                            using (var reader = marksCmd.ExecuteReader())
+                            {
+                                DataTable dt = new DataTable();
+                                dt.Load(reader);
+                                dgvMarks.DataSource = dt;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No student record found for this user.");
+                    }
+                }
+            }
+        }
+
+        private void LoadSubjects()
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                string query = "SELECT SubjectId, SubjectName FROM Subjects";
+                using (var cmd = new SQLiteCommand(query, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    var dt = new DataTable();
+                    dt.Load(reader);
+
+                    cmbSubject.DataSource = dt;
+                    cmbSubject.DisplayMember = "SubjectName";
+                    cmbSubject.ValueMember = "SubjectId";
+                }
+            }
         }
 
         private void LoadStudents()
@@ -60,6 +154,27 @@ namespace Unicom_TIC_Management_System.View
                     cmbExam.DataSource = dt;
                     cmbExam.DisplayMember = "ExamName";
                     cmbExam.ValueMember = "ExamId";
+                }
+            }
+        }
+
+        private void LoadExams(int subjectId)
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                string query = "SELECT ExamId, ExamName FROM Exams WHERE SubjectId = @SubjectId";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@SubjectId", subjectId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        var dt = new DataTable();
+                        dt.Load(reader);
+
+                        cmbExam.DataSource = dt;
+                        cmbExam.DisplayMember = "ExamName";
+                        cmbExam.ValueMember = "ExamId";
+                    }
                 }
             }
         }
@@ -129,13 +244,22 @@ namespace Unicom_TIC_Management_System.View
 
         private void dgvMarks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0 && role != "Student")
             {
                 DataGridViewRow row = dgvMarks.Rows[e.RowIndex];
 
                 cmbStudent.SelectedValue = Convert.ToInt32(row.Cells["StudentId"].Value);
                 cmbExam.SelectedValue = Convert.ToInt32(row.Cells["ExamId"].Value);
                 txtScore.Text = row.Cells["Score"].Value.ToString();
+            }
+        }
+
+        private void cmbSubject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSubject.SelectedValue != null && int.TryParse(cmbSubject.SelectedValue.ToString(), out int subjectId))
+            {
+                LoadExams(subjectId);
+               
             }
         }
     }

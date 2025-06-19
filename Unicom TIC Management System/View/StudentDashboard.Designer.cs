@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelContent = new System.Windows.Forms.Panel();
-            this.btnViewMarks = new System.Windows.Forms.Button();
             this.btnViewTimetable = new System.Windows.Forms.Button();
+            this.btnViewMarks = new System.Windows.Forms.Button();
+            this.panelContent = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,12 +45,14 @@
             this.panel1.Size = new System.Drawing.Size(200, 654);
             this.panel1.TabIndex = 0;
             // 
-            // panelContent
+            // btnViewTimetable
             // 
-            this.panelContent.Location = new System.Drawing.Point(215, 16);
-            this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(839, 626);
-            this.panelContent.TabIndex = 1;
+            this.btnViewTimetable.Location = new System.Drawing.Point(34, 300);
+            this.btnViewTimetable.Name = "btnViewTimetable";
+            this.btnViewTimetable.Size = new System.Drawing.Size(123, 23);
+            this.btnViewTimetable.TabIndex = 0;
+            this.btnViewTimetable.Text = "View Timetable";
+            this.btnViewTimetable.UseVisualStyleBackColor = true;
             // 
             // btnViewMarks
             // 
@@ -62,14 +64,12 @@
             this.btnViewMarks.UseVisualStyleBackColor = true;
             this.btnViewMarks.Click += new System.EventHandler(this.btnViewMarks_Click);
             // 
-            // btnViewTimetable
+            // panelContent
             // 
-            this.btnViewTimetable.Location = new System.Drawing.Point(54, 325);
-            this.btnViewTimetable.Name = "btnViewTimetable";
-            this.btnViewTimetable.Size = new System.Drawing.Size(75, 23);
-            this.btnViewTimetable.TabIndex = 0;
-            this.btnViewTimetable.Text = "View Timetable";
-            this.btnViewTimetable.UseVisualStyleBackColor = true;
+            this.panelContent.Location = new System.Drawing.Point(215, 16);
+            this.panelContent.Name = "panelContent";
+            this.panelContent.Size = new System.Drawing.Size(839, 626);
+            this.panelContent.TabIndex = 1;
             // 
             // StudentDashboard
             // 

@@ -7,14 +7,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unicom_TIC_Management_System.Models;
 
 namespace Unicom_TIC_Management_System.View
 {
     public partial class AdminDashboard : Form
     {
-        public AdminDashboard()
+        private int userId;
+        private string role;
+
+
+        public AdminDashboard(int userId, string role)
         {
             InitializeComponent();
+
+            this.userId = userId;
+            this.role = role;
+
+            ApplyRoleRestrictions();
+        }
+
+
+        private void ApplyRoleRestrictions()
+        {
+            if (role == "Student")
+            {
+                // Hide or disable admin-only buttons
+                btnManageUsers.Visible = false;
+                btnManageCourses.Visible = false;
+                btnManageSubjects.Visible = false;
+                btnManageStudents.Visible = false;
+                btnManageRooms.Visible = false;
+                btnManageExams.Visible = false;
+                btnManageMarks.Visible = true;  // View only
+                btnManageTimetable.Visible = true;    // View only
+            }
+
+            /*
+            else if (role == "Lecturer" || role == "Staff")
+            {
+                // Optional: Restrict based on their permissions
+                btnManageUsers.Visible = false;
+                btnManageCourses.Visible = false;
+                btnManageSubjects.Visible = false;
+                btnManageStudents.Visible = false;  
+            }  */
         }
 
         private void panelMainContent_Paint(object sender, PaintEventArgs e)
@@ -73,7 +110,7 @@ namespace Unicom_TIC_Management_System.View
 
         private void btnManageMarks_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new MarksManagementControl());
+            LoadUserControl(new MarksManagementControl(userId, role));
         }
 
         private void btnManageRooms_Click(object sender, EventArgs e)
@@ -83,7 +120,17 @@ namespace Unicom_TIC_Management_System.View
 
         private void btnManageTimetable_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new TimetableManagementControl());
+            LoadUserControl(new TimetableManagementControl(userId, role));
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            // Show the Login Form again
+            Login loginForm = new Login();
+            loginForm.Show();
+
+            // Close the current Dashboard
+            this.Close();
         }
     }
 }

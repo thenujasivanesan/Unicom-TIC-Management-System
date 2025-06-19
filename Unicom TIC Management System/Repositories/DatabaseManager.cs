@@ -17,7 +17,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 // Create Users table
                 string UsersTable = @"
             CREATE TABLE IF NOT EXISTS Users (
-                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                UserId INTEGER PRIMARY KEY AUTOINCREMENT,
                 Username TEXT NOT NULL,
                 Password TEXT NOT NULL,
                 Role TEXT NOT NULL
@@ -43,6 +43,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 string StudentsTable = @"
             CREATE TABLE IF NOT EXISTS Students (
                 StudentId INTEGER PRIMARY KEY AUTOINCREMENT,
+                UserId INTEGER UNIQUE NOT NULL,
                 FirstName TEXT NOT NULL,
                 LastName TEXT NOT NULL,
                 Gender TEXT NOT NULL,
@@ -51,6 +52,8 @@ namespace Unicom_TIC_Management_System.Repositories
                 Email TEXT,
                 Address TEXT,
                 CourseId INTEGER NOT NULL,
+
+                FOREIGN KEY (UserId) REFERENCES Users(UserId),
                 FOREIGN KEY (CourseId) REFERENCES Courses(CourseId)
             );";
 

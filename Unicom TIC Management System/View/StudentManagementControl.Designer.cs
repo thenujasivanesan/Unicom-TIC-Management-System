@@ -49,6 +49,8 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvStudents = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbUsers = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.SuspendLayout();
             // 
@@ -237,6 +239,23 @@
             this.dgvStudents.TabIndex = 6;
             this.dgvStudents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellClick);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(398, 138);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 16);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Users";
+            // 
+            // cmbUsers
+            // 
+            this.cmbUsers.FormattingEnabled = true;
+            this.cmbUsers.Location = new System.Drawing.Point(462, 135);
+            this.cmbUsers.Name = "cmbUsers";
+            this.cmbUsers.Size = new System.Drawing.Size(151, 24);
+            this.cmbUsers.TabIndex = 2;
+            // 
             // StudentManagementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -247,6 +266,7 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dtpDOB);
+            this.Controls.Add(this.cmbUsers);
             this.Controls.Add(this.cmbCourse);
             this.Controls.Add(this.cmbGender);
             this.Controls.Add(this.txtEmail);
@@ -254,6 +274,7 @@
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtFirstName);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
@@ -294,5 +315,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dgvStudents;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbUsers;
     }
 }

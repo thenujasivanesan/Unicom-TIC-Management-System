@@ -26,6 +26,27 @@ namespace Unicom_TIC_Management_System.View
             cmbGender.Items.AddRange(new string[] { "Male", "Female", "Other" });
             LoadCourses();
             LoadStudents();
+            LoadUsers();
+        }
+
+
+        private void LoadUsers()
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                string query = "SELECT UserId, Username FROM Users WHERE Role = 'Student'";
+                using (var cmd = new SQLiteCommand(query, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    var dt = new DataTable();
+                    dt.Load(reader);
+
+                    cmbUsers.DataSource = dt;
+                    cmbUsers.DisplayMember = "Username";
+                    cmbUsers.ValueMember = "UserId";
+                    cmbUsers.SelectedIndex = -1; // no default selected user
+                }
+            }
         }
 
 
@@ -55,8 +76,15 @@ namespace Unicom_TIC_Management_System.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (cmbUsers.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a User for this student.");
+                return;
+            }
+
             var student = new Student
             {
+                UserId = Convert.ToInt32(cmbUsers.SelectedValue),
                 FirstName = txtFirstName.Text.Trim(),
                 LastName = txtLastName.Text.Trim(),
                 Gender = cmbGender.Text,
@@ -79,6 +107,7 @@ namespace Unicom_TIC_Management_System.View
                 var student = new Student
                 {
                     StudentId = Convert.ToInt32(dgvStudents.SelectedRows[0].Cells["StudentId"].Value),
+                    UserId = Convert.ToInt32(cmbUsers.SelectedValue),
                     FirstName = txtFirstName.Text.Trim(),
                     LastName = txtLastName.Text.Trim(),
                     Gender = cmbGender.Text,
@@ -122,6 +151,7 @@ namespace Unicom_TIC_Management_System.View
             txtEmail.Text = "";
             txtAddress.Text = "";
             cmbCourse.SelectedIndex = -1;
+            cmbUsers.SelectedIndex = -1; 
         }
 
         private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -130,6 +160,7 @@ namespace Unicom_TIC_Management_System.View
             {
                 DataGridViewRow row = dgvStudents.Rows[e.RowIndex];
                 txtFirstName.Text = row.Cells["FirstName"].Value.ToString();
+                cmbUsers.SelectedValue = Convert.ToInt32(row.Cells["UserId"].Value);
                 txtLastName.Text = row.Cells["LastName"].Value.ToString();
                 cmbGender.Text = row.Cells["Gender"].Value.ToString();
                 dtpDOB.Value = Convert.ToDateTime(row.Cells["DateOfBirth"].Value);

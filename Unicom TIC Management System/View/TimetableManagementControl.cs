@@ -14,9 +14,15 @@ namespace Unicom_TIC_Management_System.View
 {
     public partial class TimetableManagementControl : UserControl
     {
-        public TimetableManagementControl()
+        private int userId;
+        private string role;
+
+        public TimetableManagementControl(int userId, string role)
         {
             InitializeComponent();
+
+            this.userId = userId;
+            this.role = role;
 
         }
 
@@ -25,7 +31,27 @@ namespace Unicom_TIC_Management_System.View
             LoadSubjects();
             LoadRooms();
             LoadTimetables();
-            
+
+
+
+
+            if (role == "Student")
+            {
+                btnAdd.Visible = false;
+                btnUpdate.Visible = false;
+                btnDelete.Visible = false;
+                btnClear.Visible = false;
+
+                
+                lblSubject.Visible = false;
+                cmbSubject.Visible = false;
+                lblRoom.Visible = false;
+                cmbRoom.Visible = false;
+                lblTimeSlot.Visible = false;
+                txtTimeSlot.Visible = false;
+
+            }
+
         }
 
         private void LoadSubjects()

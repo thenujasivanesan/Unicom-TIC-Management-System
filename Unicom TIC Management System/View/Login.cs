@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Unicom_TIC_Management_System.Controllers;
 using Unicom_TIC_Management_System.Models;
 using Unicom_TIC_Management_System.Repositories;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Unicom_TIC_Management_System.View
 {
@@ -23,37 +24,45 @@ namespace Unicom_TIC_Management_System.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            LoginControllers controller = new LoginControllers();
-            string role = controller.Login(txtUsername2.Text, txtPassword2.Text);
 
-            if (role == null)
+            string username = txtUsername2.Text.Trim();
+            string password = txtPassword2.Text.Trim();
+
+            LoginControllers loginController = new LoginControllers();
+            LoginInfo loginInfo = loginController.Login(username, password);
+
+            if (loginInfo != null)
             {
-                MessageBox.Show("Invalid credentials");
+                MessageBox.Show("Login successful!");
+
+                // ✅ Pass userId and role to AdminDashboard
+                AdminDashboard dashboard = new AdminDashboard(loginInfo.UserId, loginInfo.Role);
+                dashboard.Show();
+                this.Hide();
             }
             else
             {
-              
-
-                MessageBox.Show("Login Successful!");
-
-                this.Hide(); // Hiding Login Form
-
-                switch (role)
-                {
-                    case "Admin":
-                        new AdminDashboard().Show();
-                        break;
-                    case "Student":
-                        new StudentDashboard().Show();
-                        break;
-                    case "Staff":
-                        new StaffDashboard().Show();
-                        break;
-                    case "Lecturer":
-                        new LecturerDashboard().Show();
-                        break;
-                }
+                MessageBox.Show("Invalid username or password!");
             }
+
+
+            /*
+            var loginController = new LoginControllers();
+            var userInfo = loginController.Login(username, password);
+
+            if (userInfo == null)
+            {
+                MessageBox.Show("Invalid username or password.");
+                return;
+            }
+
+            MessageBox.Show("Login Successful!");
+
+            // Pass the info to the dashboard
+            AdminDashboard dashboard = new AdminDashboard(userInfo.Username, userInfo.Role);
+            dashboard.Show();
+            this.Hide();  */
+
 
         }
 

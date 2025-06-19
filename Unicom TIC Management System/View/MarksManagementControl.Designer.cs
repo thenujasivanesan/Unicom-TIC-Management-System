@@ -39,6 +39,8 @@
             this.cmbExam = new System.Windows.Forms.ComboBox();
             this.lblScore = new System.Windows.Forms.Label();
             this.txtScore = new System.Windows.Forms.TextBox();
+            this.lblSubject = new System.Windows.Forms.Label();
+            this.cmbSubject = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,17 +148,36 @@
             this.txtScore.Size = new System.Drawing.Size(100, 22);
             this.txtScore.TabIndex = 4;
             // 
+            // lblSubject
+            // 
+            this.lblSubject.AutoSize = true;
+            this.lblSubject.Location = new System.Drawing.Point(99, 162);
+            this.lblSubject.Name = "lblSubject";
+            this.lblSubject.Size = new System.Drawing.Size(52, 16);
+            this.lblSubject.TabIndex = 1;
+            this.lblSubject.Text = "Subject";
+            // 
+            // cmbSubject
+            // 
+            this.cmbSubject.FormattingEnabled = true;
+            this.cmbSubject.Location = new System.Drawing.Point(169, 159);
+            this.cmbSubject.Name = "cmbSubject";
+            this.cmbSubject.Size = new System.Drawing.Size(121, 24);
+            this.cmbSubject.TabIndex = 3;
+            // 
             // MarksManagementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtScore);
+            this.Controls.Add(this.cmbSubject);
             this.Controls.Add(this.cmbExam);
             this.Controls.Add(this.cmbStudent);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.lblSubject);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.lblExam);
             this.Controls.Add(this.lblStudent);
@@ -183,5 +204,7 @@
         private System.Windows.Forms.ComboBox cmbExam;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.TextBox txtScore;
+        private System.Windows.Forms.Label lblSubject;
+        private System.Windows.Forms.ComboBox cmbSubject;
     }
 }

@@ -90,6 +90,7 @@
     </Compile>
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Exam.cs" />
+    <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\Mark.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Session.cs" />

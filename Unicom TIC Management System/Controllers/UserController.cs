@@ -30,13 +30,13 @@ namespace Unicom_TIC_Management_System.Controllers
         {
             using (var conn = dbConfig.GetConnection())
             {
-                string query = "UPDATE Users SET Username = @Username, Password = @Password, Role = @Role WHERE Id = @Id";
+                string query = "UPDATE Users SET Username = @Username, Password = @Password, Role = @Role WHERE UserId = @Id";
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Username", user.Username);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
                     cmd.Parameters.AddWithValue("@Role", user.Role);
-                    cmd.Parameters.AddWithValue("@Id", user.Id);
+                    cmd.Parameters.AddWithValue("@Id", user.UserId);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -46,7 +46,7 @@ namespace Unicom_TIC_Management_System.Controllers
         {
             using (var conn = dbConfig.GetConnection())
             {
-                string query = "DELETE FROM Users WHERE Id = @Id";
+                string query = "DELETE FROM Users WHERE UserId = @Id";
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Id", id);
@@ -68,7 +68,7 @@ namespace Unicom_TIC_Management_System.Controllers
                     {
                         list.Add(new User
                         {
-                            Id = Convert.ToInt32(reader["Id"]),
+                            UserId = Convert.ToInt32(reader["UserId"]),
                             Username = reader["Username"].ToString(),
                             Password = reader["Password"].ToString(),
                             Role = reader["Role"].ToString()
