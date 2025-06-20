@@ -15,11 +15,12 @@ namespace Unicom_TIC_Management_System.Controllers
         {
             using (var conn = dbConfig.GetConnection())
             {
-                string query = "INSERT INTO Subjects (SubjectName, CourseId) VALUES (@SubjectName, @CourseId)";
+                string query = "INSERT INTO Subjects (SubjectName, CourseId, LecturerId) VALUES (@SubjectName, @CourseId, @LecturerId)";
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@SubjectName", subject.SubjectName);
                     cmd.Parameters.AddWithValue("@CourseId", subject.CourseId);
+                    cmd.Parameters.AddWithValue("@LecturerId", subject.LecturerId);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -29,11 +30,12 @@ namespace Unicom_TIC_Management_System.Controllers
         {
             using (var conn = dbConfig.GetConnection())
             {
-                string query = "UPDATE Subjects SET SubjectName = @SubjectName, CourseId = @CourseId WHERE SubjectId = @SubjectId";
+                string query = "UPDATE Subjects SET SubjectName = @SubjectName, CourseId = @CourseId, LecturerId = @LecturerId WHERE SubjectId = @SubjectId";
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@SubjectName", subject.SubjectName);
                     cmd.Parameters.AddWithValue("@CourseId", subject.CourseId);
+                    cmd.Parameters.AddWithValue("@LecturerId", subject.LecturerId);
                     cmd.Parameters.AddWithValue("@SubjectId", subject.SubjectId);
                     cmd.ExecuteNonQuery();
                 }
@@ -59,7 +61,7 @@ namespace Unicom_TIC_Management_System.Controllers
 
             using (var conn = dbConfig.GetConnection())
             {
-                string query = @"SELECT s.SubjectId, s.SubjectName, s.CourseId, c.CourseName
+                string query = @"SELECT s.SubjectId, s.SubjectName, s.CourseId, s.LecturerId, c.CourseName
                              FROM Subjects s
                              INNER JOIN Courses c ON s.CourseId = c.CourseId";
 
@@ -73,6 +75,7 @@ namespace Unicom_TIC_Management_System.Controllers
                             SubjectId = Convert.ToInt32(reader["SubjectId"]),
                             SubjectName = reader["SubjectName"].ToString(),
                             CourseId = Convert.ToInt32(reader["CourseId"]),
+                            LecturerId = reader["LecturerId"] == DBNull.Value ? 0 : Convert.ToInt32(reader["LecturerId"]),
                             CourseName = reader["CourseName"].ToString()
                         });
                     }

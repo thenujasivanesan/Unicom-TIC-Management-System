@@ -73,6 +73,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DatabaseChecker.cs" />
     <Compile Include="Controllers\ExamController.cs" />
+    <Compile Include="Controllers\LecturerController.cs" />
     <Compile Include="Controllers\LoginControllers.cs" />
     <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -90,6 +91,7 @@
     </Compile>
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Exam.cs" />
+    <Compile Include="Models\Lecturer.cs" />
     <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\Mark.cs" />
     <Compile Include="Models\Room.cs" />
@@ -132,6 +134,12 @@
     </Compile>
     <Compile Include="View\LecturerDashboard.Designer.cs">
       <DependentUpon>LecturerDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LecturerManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\LecturerManagementControl.Designer.cs">
+      <DependentUpon>LecturerManagementControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
@@ -232,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ExamManagementControl.resx">
       <DependentUpon>ExamManagementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LecturerManagementControl.resx">
+      <DependentUpon>LecturerManagementControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

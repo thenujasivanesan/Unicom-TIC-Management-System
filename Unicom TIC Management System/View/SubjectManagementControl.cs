@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Unicom_TIC_Management_System.Controllers;
 using Unicom_TIC_Management_System.Models;
 using Unicom_TIC_Management_System.Repositories;
@@ -25,9 +26,30 @@ namespace Unicom_TIC_Management_System.View
         {
             LoadCourses();
             LoadSubjects();
+            LoadLecturers();
+            ClearFields();
 
         }
 
+
+
+        private void LoadLecturers()
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                string query = "SELECT LecturerId, FirstName || ' ' || LastName AS FullName FROM Lecturers";
+                using (var cmd = new SQLiteCommand(query, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    cmbLecturer.DataSource = dt;
+                    cmbLecturer.DisplayMember = "FullName";
+                    cmbLecturer.ValueMember = "LecturerId";
+                    cmbLecturer.SelectedIndex = -1;
+                }
+            }
+        }
 
         private void LoadCourses()
         {
@@ -57,7 +79,8 @@ namespace Unicom_TIC_Management_System.View
             var subject = new Subject
             {
                 SubjectName = txtSubjectName.Text.Trim(),
-                CourseId = Convert.ToInt32(cmbCourses.SelectedValue)
+                CourseId = Convert.ToInt32(cmbCourses.SelectedValue),
+                LecturerId = Convert.ToInt32(cmbLecturer.SelectedValue)
             };
 
             SubjectController.AddSubject(subject);
@@ -73,7 +96,8 @@ namespace Unicom_TIC_Management_System.View
                 {
                     SubjectId = Convert.ToInt32(dgvSubjects.SelectedRows[0].Cells["SubjectId"].Value),
                     SubjectName = txtSubjectName.Text.Trim(),
-                    CourseId = Convert.ToInt32(cmbCourses.SelectedValue)
+                    CourseId = Convert.ToInt32(cmbCourses.SelectedValue),
+                    LecturerId = Convert.ToInt32(cmbLecturer.SelectedValue)
                 };
 
                 SubjectController.UpdateSubject(subject);
@@ -102,6 +126,7 @@ namespace Unicom_TIC_Management_System.View
         {
             txtSubjectName.Text = "";
             cmbCourses.SelectedIndex = -1;
+            cmbLecturer.SelectedIndex = -1;
         }
 
         private void dgvSubjects_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -111,6 +136,8 @@ namespace Unicom_TIC_Management_System.View
                 DataGridViewRow row = dgvSubjects.Rows[e.RowIndex];
                 txtSubjectName.Text = row.Cells["SubjectName"].Value.ToString();
                 cmbCourses.SelectedValue = Convert.ToInt32(row.Cells["CourseId"].Value);
+                cmbLecturer.SelectedValue = Convert.ToInt32(row.Cells["LecturerId"].Value);
+
             }
         }
 

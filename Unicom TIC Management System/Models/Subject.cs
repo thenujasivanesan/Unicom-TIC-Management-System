@@ -13,5 +13,7 @@ namespace Unicom_TIC_Management_System.Models
         public int CourseId { get; set; }
 
         public string CourseName { get;set; }
+
+        public int LecturerId { get; set; }
     }
 }

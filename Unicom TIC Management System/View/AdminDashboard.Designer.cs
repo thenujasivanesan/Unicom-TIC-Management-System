@@ -39,15 +39,19 @@
             this.btnManageRooms = new System.Windows.Forms.Button();
             this.btnManageUsers = new System.Windows.Forms.Button();
             this.panelMainContent = new System.Windows.Forms.Panel();
+            this.btnManageStaff = new System.Windows.Forms.Button();
+            this.btnManageLecturers = new System.Windows.Forms.Button();
             this.panelSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSidebar
             // 
             this.panelSidebar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelSidebar.Controls.Add(this.btnManageLecturers);
             this.panelSidebar.Controls.Add(this.btnLogout);
             this.panelSidebar.Controls.Add(this.btnManageTimetable);
             this.panelSidebar.Controls.Add(this.btnManageExams);
+            this.panelSidebar.Controls.Add(this.btnManageStaff);
             this.panelSidebar.Controls.Add(this.btnManageStudents);
             this.panelSidebar.Controls.Add(this.btnManageCourses);
             this.panelSidebar.Controls.Add(this.btnManageMarks);
@@ -56,9 +60,9 @@
             this.panelSidebar.Controls.Add(this.btnManageUsers);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Location = new System.Drawing.Point(0, 0);
-            this.panelSidebar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelSidebar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(169, 531);
+            this.panelSidebar.Size = new System.Drawing.Size(225, 654);
             this.panelSidebar.TabIndex = 1;
             // 
             // btnLogout
@@ -66,10 +70,10 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(11, 466);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogout.Location = new System.Drawing.Point(15, 574);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(148, 33);
+            this.btnLogout.Size = new System.Drawing.Size(197, 41);
             this.btnLogout.TabIndex = 0;
             this.btnLogout.Text = "⬅️ Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -80,10 +84,10 @@
             this.btnManageTimetable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageTimetable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageTimetable.ForeColor = System.Drawing.Color.White;
-            this.btnManageTimetable.Location = new System.Drawing.Point(2, 383);
-            this.btnManageTimetable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnManageTimetable.Location = new System.Drawing.Point(2, 513);
+            this.btnManageTimetable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManageTimetable.Name = "btnManageTimetable";
-            this.btnManageTimetable.Size = new System.Drawing.Size(165, 33);
+            this.btnManageTimetable.Size = new System.Drawing.Size(220, 41);
             this.btnManageTimetable.TabIndex = 0;
             this.btnManageTimetable.Text = "📰 Manage Timetable";
             this.btnManageTimetable.UseVisualStyleBackColor = true;
@@ -94,10 +98,10 @@
             this.btnManageExams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageExams.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageExams.ForeColor = System.Drawing.Color.White;
-            this.btnManageExams.Location = new System.Drawing.Point(2, 236);
-            this.btnManageExams.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnManageExams.Location = new System.Drawing.Point(0, 358);
+            this.btnManageExams.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManageExams.Name = "btnManageExams";
-            this.btnManageExams.Size = new System.Drawing.Size(165, 33);
+            this.btnManageExams.Size = new System.Drawing.Size(220, 41);
             this.btnManageExams.TabIndex = 0;
             this.btnManageExams.Text = "📝 Manage Exams";
             this.btnManageExams.UseVisualStyleBackColor = true;
@@ -108,10 +112,10 @@
             this.btnManageStudents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageStudents.ForeColor = System.Drawing.Color.White;
-            this.btnManageStudents.Location = new System.Drawing.Point(2, 181);
-            this.btnManageStudents.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnManageStudents.Location = new System.Drawing.Point(3, 214);
+            this.btnManageStudents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManageStudents.Name = "btnManageStudents";
-            this.btnManageStudents.Size = new System.Drawing.Size(165, 33);
+            this.btnManageStudents.Size = new System.Drawing.Size(220, 41);
             this.btnManageStudents.TabIndex = 0;
             this.btnManageStudents.Text = "🧑‍🎓 Manage Students";
             this.btnManageStudents.UseVisualStyleBackColor = true;
@@ -122,10 +126,10 @@
             this.btnManageCourses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageCourses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageCourses.ForeColor = System.Drawing.Color.White;
-            this.btnManageCourses.Location = new System.Drawing.Point(2, 69);
-            this.btnManageCourses.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnManageCourses.Location = new System.Drawing.Point(3, 85);
+            this.btnManageCourses.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManageCourses.Name = "btnManageCourses";
-            this.btnManageCourses.Size = new System.Drawing.Size(165, 33);
+            this.btnManageCourses.Size = new System.Drawing.Size(220, 41);
             this.btnManageCourses.TabIndex = 0;
             this.btnManageCourses.Text = "📒 Manage Courses";
             this.btnManageCourses.UseVisualStyleBackColor = true;
@@ -136,10 +140,10 @@
             this.btnManageMarks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageMarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageMarks.ForeColor = System.Drawing.Color.White;
-            this.btnManageMarks.Location = new System.Drawing.Point(2, 289);
-            this.btnManageMarks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnManageMarks.Location = new System.Drawing.Point(0, 412);
+            this.btnManageMarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManageMarks.Name = "btnManageMarks";
-            this.btnManageMarks.Size = new System.Drawing.Size(165, 33);
+            this.btnManageMarks.Size = new System.Drawing.Size(220, 41);
             this.btnManageMarks.TabIndex = 0;
             this.btnManageMarks.Text = "📔 Manage Marks";
             this.btnManageMarks.UseVisualStyleBackColor = true;
@@ -150,10 +154,10 @@
             this.btnManageSubjects.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageSubjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageSubjects.ForeColor = System.Drawing.Color.White;
-            this.btnManageSubjects.Location = new System.Drawing.Point(2, 126);
-            this.btnManageSubjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnManageSubjects.Location = new System.Drawing.Point(3, 155);
+            this.btnManageSubjects.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManageSubjects.Name = "btnManageSubjects";
-            this.btnManageSubjects.Size = new System.Drawing.Size(165, 33);
+            this.btnManageSubjects.Size = new System.Drawing.Size(220, 41);
             this.btnManageSubjects.TabIndex = 0;
             this.btnManageSubjects.Text = "📖 Manage Subjects";
             this.btnManageSubjects.UseVisualStyleBackColor = true;
@@ -164,10 +168,10 @@
             this.btnManageRooms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageRooms.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageRooms.ForeColor = System.Drawing.Color.White;
-            this.btnManageRooms.Location = new System.Drawing.Point(2, 335);
-            this.btnManageRooms.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnManageRooms.Location = new System.Drawing.Point(0, 457);
+            this.btnManageRooms.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManageRooms.Name = "btnManageRooms";
-            this.btnManageRooms.Size = new System.Drawing.Size(165, 33);
+            this.btnManageRooms.Size = new System.Drawing.Size(220, 41);
             this.btnManageRooms.TabIndex = 0;
             this.btnManageRooms.Text = "🚪 Manage Rooms";
             this.btnManageRooms.UseVisualStyleBackColor = true;
@@ -178,10 +182,10 @@
             this.btnManageUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageUsers.ForeColor = System.Drawing.Color.White;
-            this.btnManageUsers.Location = new System.Drawing.Point(2, 22);
-            this.btnManageUsers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnManageUsers.Location = new System.Drawing.Point(3, 27);
+            this.btnManageUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManageUsers.Name = "btnManageUsers";
-            this.btnManageUsers.Size = new System.Drawing.Size(165, 33);
+            this.btnManageUsers.Size = new System.Drawing.Size(220, 41);
             this.btnManageUsers.TabIndex = 0;
             this.btnManageUsers.Text = "👥 Manage Users";
             this.btnManageUsers.UseVisualStyleBackColor = true;
@@ -189,22 +193,46 @@
             // 
             // panelMainContent
             // 
-            this.panelMainContent.Location = new System.Drawing.Point(173, 11);
-            this.panelMainContent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelMainContent.Location = new System.Drawing.Point(231, 14);
+            this.panelMainContent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMainContent.Name = "panelMainContent";
-            this.panelMainContent.Size = new System.Drawing.Size(629, 509);
+            this.panelMainContent.Size = new System.Drawing.Size(839, 626);
             this.panelMainContent.TabIndex = 2;
             this.panelMainContent.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMainContent_Paint);
             // 
+            // btnManageStaff
+            // 
+            this.btnManageStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageStaff.ForeColor = System.Drawing.Color.White;
+            this.btnManageStaff.Location = new System.Drawing.Point(2, 304);
+            this.btnManageStaff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnManageStaff.Name = "btnManageStaff";
+            this.btnManageStaff.Size = new System.Drawing.Size(220, 41);
+            this.btnManageStaff.TabIndex = 0;
+            this.btnManageStaff.Text = "🧑‍🎓 Manage Staff";
+            this.btnManageStaff.UseVisualStyleBackColor = true;
+            this.btnManageStaff.Click += new System.EventHandler(this.btnManageStudents_Click);
+            // 
+            // btnManageLecturers
+            // 
+            this.btnManageLecturers.Location = new System.Drawing.Point(15, 260);
+            this.btnManageLecturers.Name = "btnManageLecturers";
+            this.btnManageLecturers.Size = new System.Drawing.Size(197, 29);
+            this.btnManageLecturers.TabIndex = 1;
+            this.btnManageLecturers.Text = "Manage Lecturers";
+            this.btnManageLecturers.UseVisualStyleBackColor = true;
+            this.btnManageLecturers.Click += new System.EventHandler(this.btnManageLecturers_Click);
+            // 
             // AdminDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 531);
+            this.ClientSize = new System.Drawing.Size(1083, 654);
             this.Controls.Add(this.panelMainContent);
             this.Controls.Add(this.panelSidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AdminDashboard";
             this.Text = "AdminDashboard";
             this.Load += new System.EventHandler(this.AdminDashboard_Load);
@@ -225,5 +253,7 @@
         private System.Windows.Forms.Button btnManageMarks;
         private System.Windows.Forms.Button btnManageSubjects;
         private System.Windows.Forms.Button btnManageRooms;
+        private System.Windows.Forms.Button btnManageStaff;
+        private System.Windows.Forms.Button btnManageLecturers;
     }
 }

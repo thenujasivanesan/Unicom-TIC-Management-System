@@ -42,6 +42,8 @@ namespace Unicom_TIC_Management_System.View
                 btnManageExams.Visible = false;
                 btnManageMarks.Visible = true;  // View only
                 btnManageTimetable.Visible = true;    // View only
+                btnManageLecturers.Visible = false;
+                btnManageStaff.Visible = false;
             }
 
             
@@ -55,7 +57,9 @@ namespace Unicom_TIC_Management_System.View
                 btnManageRooms.Visible = false;
                 btnManageExams.Visible = false;
                 btnManageMarks.Visible = true;  
-                btnManageTimetable.Visible = true;    
+                btnManageTimetable.Visible = true;
+                btnManageLecturers.Visible = false;
+                btnManageStaff.Visible = false;
             }
 
             else if (role == "Staff")
@@ -69,6 +73,8 @@ namespace Unicom_TIC_Management_System.View
                 btnManageExams.Visible = true;
                 btnManageMarks.Visible = true;
                 btnManageTimetable.Visible = true;
+                btnManageLecturers.Visible=false;
+                btnManageStaff.Visible=false;
             }
 
         }
@@ -150,6 +156,12 @@ namespace Unicom_TIC_Management_System.View
 
             // Close the current Dashboard
             this.Close();
+        }
+
+        private void btnManageLecturers_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new LecturerManagementControl());
+
         }
     }
 }

@@ -36,6 +36,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 SubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
                 SubjectName TEXT NOT NULL,
                 CourseID INTEGER,
+                LecturerId INTEGER,
                 FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
             );";
 
@@ -128,11 +129,14 @@ namespace Unicom_TIC_Management_System.Repositories
                 // Create Lecturers table
                 string LecturersTable = @"
             CREATE TABLE IF NOT EXISTS Lecturers (
-                LecturerID INTEGER PRIMARY KEY AUTOINCREMENT,
-                UserID INTEGER,
-                Name TEXT NOT NULL,
+                LecturerId INTEGER PRIMARY KEY AUTOINCREMENT,
+                UserId INTEGER UNIQUE,
+                FirstName TEXT NOT NULL,
+                LastName TEXT NOT NULL,
+                Contact TEXT,
                 Email TEXT,
-                FOREIGN KEY (UserID) REFERENCES Users(UserID)
+                Address TEXT,
+                FOREIGN KEY (UserId) REFERENCES Users(UserId)
             );";
                             
 
