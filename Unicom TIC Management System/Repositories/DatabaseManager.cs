@@ -71,9 +71,9 @@ namespace Unicom_TIC_Management_System.Repositories
                 string MarksTable = @"
             CREATE TABLE IF NOT EXISTS Marks (
                 MarkID INTEGER PRIMARY KEY AUTOINCREMENT,
-                StudentID INTEGER,
-                ExamID INTEGER,
-                Score INTEGER,
+                StudentID INTEGER NOT NULL,
+                ExamID INTEGER NOT NULL,
+                Score INTEGER NOT NULL,
                 FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
                 FOREIGN KEY (ExamID) REFERENCES Exams(ExamID)
             );";
@@ -138,7 +138,22 @@ namespace Unicom_TIC_Management_System.Repositories
                 Address TEXT,
                 FOREIGN KEY (UserId) REFERENCES Users(UserId)
             );";
-                            
+
+
+                string StaffTable = @"
+            CREATE TABLE IF NOT EXISTS Staff (
+                StaffId INTEGER PRIMARY KEY AUTOINCREMENT,
+                UserId INTEGER UNIQUE,
+                FirstName TEXT NOT NULL,
+                LastName TEXT NOT NULL,
+                Gender TEXT,
+                DateOfBirth TEXT,
+                Contact TEXT,
+                Email TEXT,
+                Address TEXT,
+                FOREIGN KEY (UserId) REFERENCES Users(UserId)
+            );";
+
 
 
 
@@ -165,6 +180,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 ExecuteNonQuery(dbconn, StudentSubjectsTable);
                 ExecuteNonQuery(dbconn, LecturerSubjectsTable);
                 ExecuteNonQuery(dbconn, LecturersTable);
+                ExecuteNonQuery(dbconn, StaffTable);
 
             }
         }

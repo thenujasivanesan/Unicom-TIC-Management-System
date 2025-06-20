@@ -163,5 +163,11 @@ namespace Unicom_TIC_Management_System.View
             LoadUserControl(new LecturerManagementControl());
 
         }
+
+        private void btnManageStaff_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new StaffManagementControl());
+
+        }
     }
 }

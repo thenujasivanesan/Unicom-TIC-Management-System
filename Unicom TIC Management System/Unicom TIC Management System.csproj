@@ -78,6 +78,7 @@
     <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\TimeSlotController.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Models\Mark.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\TimeSlot.cs" />
@@ -176,6 +178,12 @@
     </Compile>
     <Compile Include="View\StaffDashboard.Designer.cs">
       <DependentUpon>StaffDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaffManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\StaffManagementControl.Designer.cs">
+      <DependentUpon>StaffManagementControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\StudentDashboard.cs">
       <SubType>Form</SubType>
@@ -258,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\RoomsManagementControl.resx">
       <DependentUpon>RoomsManagementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StaffManagementControl.resx">
+      <DependentUpon>StaffManagementControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\StudentDashboard.resx">
       <DependentUpon>StudentDashboard.cs</DependentUpon>

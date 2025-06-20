@@ -19,6 +19,8 @@ namespace Unicom_TIC_Management_System.View
         private int userId;
         private string role;
 
+        private int lecturerId = -1;
+
         public MarksManagementControl(int userId , string role)
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace Unicom_TIC_Management_System.View
         {
             //LoadStudents();
             //LoadExams();
-            
+
             //LoadSubjects();
 
             if (role == "Student")
@@ -54,6 +56,20 @@ namespace Unicom_TIC_Management_System.View
 
                 LoadMarksForStudent(userId);
             }
+
+            else if (role == "Lecturer")
+            {
+                Lecturer lecturer = LecturerController.GetLecturerByUserId(userId);
+                if (lecturer != null)
+                {
+                    lecturerId = lecturer.LecturerId;
+                    LoadSubjects(lecturerId);
+                    LoadStudents(lecturerId);
+                    LoadMarksForLecturer(lecturerId);
+                }
+            }
+
+
             else
             {
                 LoadStudents();
@@ -61,8 +77,10 @@ namespace Unicom_TIC_Management_System.View
                 LoadSubjects();
                 LoadMarks();
             }
-        
+            
         }
+        
+        
 
         private void LoadMarksForStudent(int userId)
         {
@@ -189,8 +207,85 @@ namespace Unicom_TIC_Management_System.View
             dgvMarks.DataSource = MarkController.GetAllMarks();
         }
 
+
+        private void LoadSubjects(int lecturerId)
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                string query = "SELECT SubjectId, SubjectName FROM Subjects WHERE LecturerId = @LecturerId";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@LecturerId", lecturerId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+                        cmbSubject.DataSource = dt;
+                        cmbSubject.DisplayMember = "SubjectName";
+                        cmbSubject.ValueMember = "SubjectId";
+                    }
+                }
+            }
+        }
+
+        private void LoadStudents(int lecturerId)
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                string query = @"
+        SELECT DISTINCT s.StudentId, s.FirstName || ' ' || s.LastName AS FullName
+        FROM Students s
+        JOIN Courses c ON s.CourseId = c.CourseId
+        JOIN Subjects subj ON subj.CourseId = c.CourseId
+        WHERE subj.LecturerId = @LecturerId";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@LecturerId", lecturerId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+                        cmbStudent.DataSource = dt;
+                        cmbStudent.DisplayMember = "FullName";
+                        cmbStudent.ValueMember = "StudentId";
+                    }
+                }
+            }
+        }
+
+        private void LoadMarksForLecturer(int lecturerId)
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                string query = @"
+        SELECT m.MarkId, m.Score, m.StudentId, m.ExamId, e.ExamName, s.SubjectName
+        FROM Marks m
+        JOIN Exams e ON m.ExamId = e.ExamId
+        JOIN Subjects s ON e.SubjectId = s.SubjectId
+        WHERE s.LecturerId = @LecturerId";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@LecturerId", lecturerId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+                        dgvMarks.DataSource = dt;
+                    }
+                }
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (cmbStudent.SelectedIndex == -1 || cmbExam.SelectedIndex == -1 || string.IsNullOrWhiteSpace(txtScore.Text))
+            {
+                MessageBox.Show("Please select student, exam, and enter score.");
+                return;
+            }
+
             var mark = new Mark
             {
                 StudentId = Convert.ToInt32(cmbStudent.SelectedValue),
@@ -199,12 +294,24 @@ namespace Unicom_TIC_Management_System.View
             };
 
             MarkController.AddMark(mark);
-            LoadMarks();
+
+            if (role == "Lecturer")
+                LoadMarksForLecturer(lecturerId);
+            else
+                LoadMarks();
+
             ClearFields();
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (dgvMarks.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a mark to update.");
+                return;
+            }
+
             if (dgvMarks.SelectedRows.Count > 0)
             {
                 var mark = new Mark
@@ -216,8 +323,13 @@ namespace Unicom_TIC_Management_System.View
                 };
 
                 MarkController.UpdateMark(mark);
-                LoadMarks();
+                if (role == "Lecturer")
+                    LoadMarksForLecturer(lecturerId);
+                else
+                    LoadMarks();
+
                 ClearFields();
+                
             }
         }
 
@@ -225,10 +337,21 @@ namespace Unicom_TIC_Management_System.View
         {
             if (dgvMarks.SelectedRows.Count > 0)
             {
+                if (dgvMarks.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Please select a mark to delete.");
+                    return;
+                }
+
                 int id = Convert.ToInt32(dgvMarks.SelectedRows[0].Cells["MarkId"].Value);
                 MarkController.DeleteMark(id);
-                LoadMarks();
+                if (role == "Lecturer")
+                    LoadMarksForLecturer(lecturerId);
+                else
+                    LoadMarks();
+
                 ClearFields();
+                
             }
         }
 

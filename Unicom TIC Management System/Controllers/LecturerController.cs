@@ -97,5 +97,35 @@ namespace Unicom_TIC_Management_System.Controllers
             }
             return list;
         }
+
+        public static Lecturer GetLecturerByUserId(int userId)
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                string query = "SELECT * FROM Lecturers WHERE UserId = @UserId";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Lecturer
+                            {
+                                LecturerId = Convert.ToInt32(reader["LecturerId"]),
+                                UserId = Convert.ToInt32(reader["UserId"]),
+                                FirstName = reader["FirstName"].ToString(),
+                                LastName = reader["LastName"].ToString(),
+                                Contact = reader["Contact"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Address = reader["Address"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
     }
 }

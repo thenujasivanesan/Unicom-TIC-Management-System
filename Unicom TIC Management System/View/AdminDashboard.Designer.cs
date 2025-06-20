@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelSidebar = new System.Windows.Forms.Panel();
+            this.btnManageLecturers = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnManageTimetable = new System.Windows.Forms.Button();
             this.btnManageExams = new System.Windows.Forms.Button();
@@ -40,18 +41,17 @@
             this.btnManageUsers = new System.Windows.Forms.Button();
             this.panelMainContent = new System.Windows.Forms.Panel();
             this.btnManageStaff = new System.Windows.Forms.Button();
-            this.btnManageLecturers = new System.Windows.Forms.Button();
             this.panelSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSidebar
             // 
             this.panelSidebar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelSidebar.Controls.Add(this.btnManageStaff);
             this.panelSidebar.Controls.Add(this.btnManageLecturers);
             this.panelSidebar.Controls.Add(this.btnLogout);
             this.panelSidebar.Controls.Add(this.btnManageTimetable);
             this.panelSidebar.Controls.Add(this.btnManageExams);
-            this.panelSidebar.Controls.Add(this.btnManageStaff);
             this.panelSidebar.Controls.Add(this.btnManageStudents);
             this.panelSidebar.Controls.Add(this.btnManageCourses);
             this.panelSidebar.Controls.Add(this.btnManageMarks);
@@ -64,6 +64,16 @@
             this.panelSidebar.Name = "panelSidebar";
             this.panelSidebar.Size = new System.Drawing.Size(225, 654);
             this.panelSidebar.TabIndex = 1;
+            // 
+            // btnManageLecturers
+            // 
+            this.btnManageLecturers.Location = new System.Drawing.Point(15, 260);
+            this.btnManageLecturers.Name = "btnManageLecturers";
+            this.btnManageLecturers.Size = new System.Drawing.Size(197, 29);
+            this.btnManageLecturers.TabIndex = 1;
+            this.btnManageLecturers.Text = "Manage Lecturers";
+            this.btnManageLecturers.UseVisualStyleBackColor = true;
+            this.btnManageLecturers.Click += new System.EventHandler(this.btnManageLecturers_Click);
             // 
             // btnLogout
             // 
@@ -202,27 +212,13 @@
             // 
             // btnManageStaff
             // 
-            this.btnManageStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManageStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageStaff.ForeColor = System.Drawing.Color.White;
-            this.btnManageStaff.Location = new System.Drawing.Point(2, 304);
-            this.btnManageStaff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnManageStaff.Location = new System.Drawing.Point(15, 295);
             this.btnManageStaff.Name = "btnManageStaff";
-            this.btnManageStaff.Size = new System.Drawing.Size(220, 41);
-            this.btnManageStaff.TabIndex = 0;
-            this.btnManageStaff.Text = "🧑‍🎓 Manage Staff";
+            this.btnManageStaff.Size = new System.Drawing.Size(197, 36);
+            this.btnManageStaff.TabIndex = 2;
+            this.btnManageStaff.Text = "ManageStaff";
             this.btnManageStaff.UseVisualStyleBackColor = true;
-            this.btnManageStaff.Click += new System.EventHandler(this.btnManageStudents_Click);
-            // 
-            // btnManageLecturers
-            // 
-            this.btnManageLecturers.Location = new System.Drawing.Point(15, 260);
-            this.btnManageLecturers.Name = "btnManageLecturers";
-            this.btnManageLecturers.Size = new System.Drawing.Size(197, 29);
-            this.btnManageLecturers.TabIndex = 1;
-            this.btnManageLecturers.Text = "Manage Lecturers";
-            this.btnManageLecturers.UseVisualStyleBackColor = true;
-            this.btnManageLecturers.Click += new System.EventHandler(this.btnManageLecturers_Click);
+            this.btnManageStaff.Click += new System.EventHandler(this.btnManageStaff_Click);
             // 
             // AdminDashboard
             // 
@@ -253,7 +249,7 @@
         private System.Windows.Forms.Button btnManageMarks;
         private System.Windows.Forms.Button btnManageSubjects;
         private System.Windows.Forms.Button btnManageRooms;
-        private System.Windows.Forms.Button btnManageStaff;
         private System.Windows.Forms.Button btnManageLecturers;
+        private System.Windows.Forms.Button btnManageStaff;
     }
 }
