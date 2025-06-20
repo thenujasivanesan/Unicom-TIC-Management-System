@@ -26,9 +26,7 @@ namespace Unicom_TIC_Management_System.View
 
         private void AdminHomeControl_Load(object sender, EventArgs e)
         {
-            lblTotalStudents.Text = "Total Students: 150";
-            lblTotalLecturers.Text = "Total Lecturers: 12";
-            lblTotalStaff.Text = "Total Staff: 5";
+            
 
             if (role == "Admin")
             {
@@ -40,11 +38,11 @@ namespace Unicom_TIC_Management_System.View
             }
             else if (role == "Lecturer")
             {
-                ShowAdminSummary();
+                ShowLecturerSummary();
             }
             else if (role == "Staff")
             {
-                ShowAdminSummary();
+                ShowStaffSummary();
             }
         }
 
@@ -53,7 +51,6 @@ namespace Unicom_TIC_Management_System.View
             using (var conn = dbConfig.GetConnection())
             {
                 
-
                 var cmd1 = new SQLiteCommand("SELECT COUNT(*) FROM Students", conn);
                 var totalStudents = Convert.ToInt32(cmd1.ExecuteScalar());
 
@@ -67,6 +64,49 @@ namespace Unicom_TIC_Management_System.View
                 lblSummary.Text = $"📚 Total Students: {totalStudents}\n👨‍🏫 Lecturers: {totalLecturers}\n👩‍💼 Staff: {totalStaff}";
             }
         }
+
+        private void ShowLecturerSummary()
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+
+
+                var cmd1 = new SQLiteCommand("SELECT COUNT(*) FROM Students", conn);
+                var totalStudents = Convert.ToInt32(cmd1.ExecuteScalar());
+
+                var cmd2 = new SQLiteCommand("SELECT COUNT(*) FROM Users WHERE Role = 'Lecturer'", conn);
+                var totalLecturers = Convert.ToInt32(cmd2.ExecuteScalar());
+
+                var cmd3 = new SQLiteCommand("SELECT COUNT(*) FROM Users WHERE Role = 'Staff'", conn);
+                var totalStaff = Convert.ToInt32(cmd3.ExecuteScalar());
+
+                lblWelcome.Text = $"Welcome, Lecturer!";
+                lblSummary.Text = $"📚 Total Students: {totalStudents}\n👨‍🏫 Lecturers: {totalLecturers}\n👩‍💼 Staff: {totalStaff}";
+            }
+
+        }
+
+        private void ShowStaffSummary()
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+
+
+                var cmd1 = new SQLiteCommand("SELECT COUNT(*) FROM Students", conn);
+                var totalStudents = Convert.ToInt32(cmd1.ExecuteScalar());
+
+                var cmd2 = new SQLiteCommand("SELECT COUNT(*) FROM Users WHERE Role = 'Lecturer'", conn);
+                var totalLecturers = Convert.ToInt32(cmd2.ExecuteScalar());
+
+                var cmd3 = new SQLiteCommand("SELECT COUNT(*) FROM Users WHERE Role = 'Staff'", conn);
+                var totalStaff = Convert.ToInt32(cmd3.ExecuteScalar());
+
+                lblWelcome.Text = $"Welcome, Staff!";
+                lblSummary.Text = $"📚 Total Students: {totalStudents}\n👨‍🏫 Lecturers: {totalLecturers}\n👩‍💼 Staff: {totalStaff}";
+            }
+        }
+
+
 
         private void ShowStudentInfo()
         {
@@ -89,11 +129,28 @@ namespace Unicom_TIC_Management_System.View
                             lblWelcome.Text = $"Welcome, {name}!";
                             lblSummary.Text = $"Gender: {gender}\nDOB: {dob}";
                         }
+
+                        else
+                        {
+                            lblWelcome.Text = "Welcome, Student!";
+                            lblSummary.Text = "Your profile is not set up yet. \nPlease contact the admin.";
+                        }
+
                     }
                 }
             }
+
         }
 
 
+        private void lblWelcome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSummary_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

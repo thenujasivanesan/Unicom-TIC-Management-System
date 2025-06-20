@@ -97,5 +97,15 @@ namespace Unicom_TIC_Management_System.View
                 cmbRole.Text = row.Cells["Role"].Value.ToString();
             }
         }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -113,5 +113,10 @@ namespace Unicom_TIC_Management_System.View
                 cmbCourses.SelectedValue = Convert.ToInt32(row.Cells["CourseId"].Value);
             }
         }
+
+        private void cmbCourses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

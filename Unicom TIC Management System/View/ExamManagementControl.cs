@@ -55,16 +55,16 @@ namespace Unicom_TIC_Management_System.View
                 using (var cmd = new SQLiteCommand(query, conn))
                 using (var reader = cmd.ExecuteReader())
                 {
-                    var subjectDict = new Dictionary<int, string>();
+                    var subjectList = new List<KeyValuePair<int, string>>();
 
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["SubjectId"]);
                         string name = reader["SubjectName"].ToString();
-                        subjectDict[id] = name;
+                        subjectList.Add(new KeyValuePair<int, string>(id, name));
                     }
 
-                    cmbSubject.DataSource = new BindingSource(subjectDict, null);
+                    cmbSubject.DataSource = subjectList;
                     cmbSubject.DisplayMember = "Value";
                     cmbSubject.ValueMember = "Key";
                 }
