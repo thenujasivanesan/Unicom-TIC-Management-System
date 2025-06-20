@@ -42,7 +42,7 @@ namespace Unicom_TIC_Management_System.Controllers
             {
                 string query = @"UPDATE Students SET 
                 FirstName = @FirstName,
-                UserId = @UserId
+                UserId = @UserId,
                 LastName = @LastName,
                 Gender = @Gender,
                 DateOfBirth = @DateOfBirth,

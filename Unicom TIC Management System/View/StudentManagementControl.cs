@@ -30,11 +30,21 @@ namespace Unicom_TIC_Management_System.View
         }
 
 
-        private void LoadUsers()
+        private void LoadUsers(int? selectedUserId = null)
         {
             using (var conn = dbConfig.GetConnection())
             {
                 string query = "SELECT UserId, Username FROM Users WHERE Role = 'Student'";
+
+                if (selectedUserId.HasValue)
+                {
+                    query += $" AND (UserId NOT IN (SELECT UserId FROM Students) OR UserId = {selectedUserId.Value})";
+                }
+                else
+                {
+                    query += " AND UserId NOT IN (SELECT UserId FROM Students)";
+                }
+
                 using (var cmd = new SQLiteCommand(query, conn))
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -44,7 +54,7 @@ namespace Unicom_TIC_Management_System.View
                     cmbUsers.DataSource = dt;
                     cmbUsers.DisplayMember = "Username";
                     cmbUsers.ValueMember = "UserId";
-                    cmbUsers.SelectedIndex = -1; // no default selected user
+                    cmbUsers.SelectedIndex = -1;
                 }
             }
         }
@@ -97,6 +107,7 @@ namespace Unicom_TIC_Management_System.View
 
             StudentController.AddStudent(student);
             LoadStudents();
+            LoadUsers();
             ClearFields();
         }
 
@@ -120,6 +131,7 @@ namespace Unicom_TIC_Management_System.View
 
                 StudentController.UpdateStudent(student);
                 LoadStudents();
+                LoadUsers();
                 ClearFields();
             }
         }
@@ -151,7 +163,9 @@ namespace Unicom_TIC_Management_System.View
             txtEmail.Text = "";
             txtAddress.Text = "";
             cmbCourse.SelectedIndex = -1;
-            cmbUsers.SelectedIndex = -1; 
+            cmbUsers.SelectedIndex = -1;
+
+            LoadUsers();
         }
 
         private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -159,6 +173,11 @@ namespace Unicom_TIC_Management_System.View
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvStudents.Rows[e.RowIndex];
+                int selectedUserId = Convert.ToInt32(row.Cells["UserId"].Value);
+                LoadUsers(selectedUserId);  // Reload users to include this one for editing
+
+
+
                 txtFirstName.Text = row.Cells["FirstName"].Value.ToString();
                 cmbUsers.SelectedValue = Convert.ToInt32(row.Cells["UserId"].Value);
                 txtLastName.Text = row.Cells["LastName"].Value.ToString();
