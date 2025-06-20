@@ -265,5 +265,25 @@ namespace Unicom_TIC_Management_System.View
                
             }
         }
+
+        private void dgvMarks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cmbStudent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbExam_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblScore_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

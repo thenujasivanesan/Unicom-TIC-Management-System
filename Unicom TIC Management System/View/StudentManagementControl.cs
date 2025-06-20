@@ -175,5 +175,25 @@ namespace Unicom_TIC_Management_System.View
         {
            
         }
+
+        private void cmbGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtContact_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblGender_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

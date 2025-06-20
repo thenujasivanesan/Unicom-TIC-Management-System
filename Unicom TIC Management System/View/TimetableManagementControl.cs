@@ -169,5 +169,20 @@ namespace Unicom_TIC_Management_System.View
             cmbRoom.SelectedIndex = -1;
             txtTimeSlot.Text = "";
         }
+
+        private void lblSubject_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTimeSlot_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTimeSlot_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

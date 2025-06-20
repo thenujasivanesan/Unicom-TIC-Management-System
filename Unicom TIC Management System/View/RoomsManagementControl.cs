@@ -125,5 +125,20 @@ namespace Unicom_TIC_Management_System.View
                 cmbRoomType.SelectedItem = row.Cells["RoomType"].Value.ToString();
             }
         }
+
+        private void dataGridViewRooms_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cmbRoomType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtRoomName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

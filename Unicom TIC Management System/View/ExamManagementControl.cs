@@ -150,5 +150,10 @@ namespace Unicom_TIC_Management_System.View
                 cmbSubject.Text = row.Cells["Subject"].Value.ToString();
             }
         }
+
+        private void lblSubject_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
