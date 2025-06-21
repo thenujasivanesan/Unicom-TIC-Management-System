@@ -57,7 +57,7 @@
             this.txtExamName.Location = new System.Drawing.Point(169, 454);
             this.txtExamName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtExamName.Name = "txtExamName";
-            this.txtExamName.Size = new System.Drawing.Size(100, 22);
+            this.txtExamName.Size = new System.Drawing.Size(198, 22);
             this.txtExamName.TabIndex = 1;
             // 
             // lblSubject
@@ -154,12 +154,15 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(631, 408);
+            this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnBack.Location = new System.Drawing.Point(746, 593);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.Size = new System.Drawing.Size(90, 30);
             this.btnBack.TabIndex = 6;
             this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // ExamManagementControl

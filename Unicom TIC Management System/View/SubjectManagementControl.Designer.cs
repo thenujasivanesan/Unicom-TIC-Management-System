@@ -79,7 +79,7 @@
             this.cmbCourses.Location = new System.Drawing.Point(205, 508);
             this.cmbCourses.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCourses.Name = "cmbCourses";
-            this.cmbCourses.Size = new System.Drawing.Size(237, 24);
+            this.cmbCourses.Size = new System.Drawing.Size(184, 24);
             this.cmbCourses.TabIndex = 3;
             this.cmbCourses.SelectedIndexChanged += new System.EventHandler(this.cmbCourses_SelectedIndexChanged);
             // 
@@ -156,7 +156,7 @@
             this.cmbLecturer.FormattingEnabled = true;
             this.cmbLecturer.Location = new System.Drawing.Point(205, 568);
             this.cmbLecturer.Name = "cmbLecturer";
-            this.cmbLecturer.Size = new System.Drawing.Size(121, 24);
+            this.cmbLecturer.Size = new System.Drawing.Size(184, 24);
             this.cmbLecturer.TabIndex = 7;
             // 
             // lblLecturer
@@ -172,12 +172,15 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(622, 377);
+            this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnBack.Location = new System.Drawing.Point(746, 593);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.Size = new System.Drawing.Size(90, 30);
             this.btnBack.TabIndex = 9;
             this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // SubjectManagementControl

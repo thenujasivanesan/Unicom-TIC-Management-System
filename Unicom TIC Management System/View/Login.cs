@@ -28,6 +28,12 @@ namespace Unicom_TIC_Management_System.View
             string username = txtUsername2.Text.Trim();
             string password = txtPassword2.Text.Trim();
 
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Username and Password cannot be empty.", "Validation Error");
+                return;
+            }
+
             LoginControllers loginController = new LoginControllers();
             LoginInfo loginInfo = loginController.Login(username, password);
 
@@ -45,25 +51,6 @@ namespace Unicom_TIC_Management_System.View
                 MessageBox.Show("Invalid username or password!");
             }
 
-
-            /*
-            var loginController = new LoginControllers();
-            var userInfo = loginController.Login(username, password);
-
-            if (userInfo == null)
-            {
-                MessageBox.Show("Invalid username or password.");
-                return;
-            }
-
-            MessageBox.Show("Login Successful!");
-
-            // Pass the info to the dashboard
-            AdminDashboard dashboard = new AdminDashboard(userInfo.Username, userInfo.Role);
-            dashboard.Show();
-            this.Hide();  */
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -79,7 +66,7 @@ namespace Unicom_TIC_Management_System.View
             txtPassword2.PasswordChar = '*'; 
 
 
-            // Setting focus back to Username
+            //Setting focus back to Username
             txtUsername2.Focus();
 
         }

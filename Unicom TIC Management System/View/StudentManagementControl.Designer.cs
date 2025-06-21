@@ -87,7 +87,7 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.lblGender.Location = new System.Drawing.Point(287, 400);
+            this.lblGender.Location = new System.Drawing.Point(613, 396);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(52, 16);
             this.lblGender.TabIndex = 0;
@@ -118,7 +118,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.Location = new System.Drawing.Point(15, 535);
+            this.label5.Location = new System.Drawing.Point(287, 396);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 16);
             this.label5.TabIndex = 0;
@@ -135,7 +135,7 @@
             // cmbGender
             // 
             this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.Location = new System.Drawing.Point(403, 396);
+            this.cmbGender.Location = new System.Drawing.Point(671, 391);
             this.cmbGender.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(151, 24);
@@ -161,7 +161,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(97, 527);
+            this.txtEmail.Location = new System.Drawing.Point(401, 390);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(151, 22);
@@ -190,7 +190,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(612, 399);
+            this.label2.Location = new System.Drawing.Point(612, 433);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 16);
             this.label2.TabIndex = 0;
@@ -199,7 +199,7 @@
             // cmbCourse
             // 
             this.cmbCourse.FormattingEnabled = true;
-            this.cmbCourse.Location = new System.Drawing.Point(671, 390);
+            this.cmbCourse.Location = new System.Drawing.Point(671, 433);
             this.cmbCourse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCourse.Name = "cmbCourse";
             this.cmbCourse.Size = new System.Drawing.Size(151, 24);
@@ -280,7 +280,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label6.Location = new System.Drawing.Point(612, 444);
+            this.label6.Location = new System.Drawing.Point(612, 480);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 16);
             this.label6.TabIndex = 0;
@@ -289,7 +289,7 @@
             // cmbUsers
             // 
             this.cmbUsers.FormattingEnabled = true;
-            this.cmbUsers.Location = new System.Drawing.Point(671, 437);
+            this.cmbUsers.Location = new System.Drawing.Point(671, 472);
             this.cmbUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbUsers.Name = "cmbUsers";
             this.cmbUsers.Size = new System.Drawing.Size(151, 24);
@@ -298,12 +298,15 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(671, 338);
+            this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnBack.Location = new System.Drawing.Point(746, 593);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.Size = new System.Drawing.Size(90, 30);
             this.btnBack.TabIndex = 7;
             this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click_1);
             // 
             // StudentManagementControl

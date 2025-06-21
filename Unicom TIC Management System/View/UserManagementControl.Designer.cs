@@ -48,7 +48,7 @@
             this.txtUsername.Location = new System.Drawing.Point(155, 427);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(132, 22);
+            this.txtUsername.Size = new System.Drawing.Size(188, 22);
             this.txtUsername.TabIndex = 0;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
@@ -57,7 +57,7 @@
             this.txtPassword.Location = new System.Drawing.Point(155, 474);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(132, 22);
+            this.txtPassword.Size = new System.Drawing.Size(188, 22);
             this.txtPassword.TabIndex = 1;
             // 
             // cmbRole
@@ -66,7 +66,7 @@
             this.cmbRole.Location = new System.Drawing.Point(155, 527);
             this.cmbRole.Margin = new System.Windows.Forms.Padding(4);
             this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(160, 24);
+            this.cmbRole.Size = new System.Drawing.Size(188, 24);
             this.cmbRole.TabIndex = 2;
             // 
             // lblUsername
@@ -184,7 +184,7 @@
             this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnBack.Location = new System.Drawing.Point(764, 577);
+            this.btnBack.Location = new System.Drawing.Point(764, 592);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(90, 30);
             this.btnBack.TabIndex = 8;

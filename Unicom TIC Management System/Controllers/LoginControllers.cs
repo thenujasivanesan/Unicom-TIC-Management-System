@@ -18,7 +18,6 @@ namespace Unicom_TIC_Management_System.Controllers
             // Basic validation
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Username and password cannot be empty.", "Validation Error");
                 return null;
             }
 
@@ -44,8 +43,7 @@ namespace Unicom_TIC_Management_System.Controllers
                     }
                 }
 
-                // If login fails
-                MessageBox.Show("Invalid username or password.", "Login Failed");
+                
                 return null;
             }
             catch (Exception ex)
