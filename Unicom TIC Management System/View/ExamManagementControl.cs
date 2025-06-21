@@ -67,13 +67,11 @@ namespace Unicom_TIC_Management_System.View
                     cmbSubject.DataSource = subjectList;
                     cmbSubject.DisplayMember = "Value";
                     cmbSubject.ValueMember = "Key";
+                    cmbSubject.SelectedIndex = -1;
                 }
             }
         }
             
-
-
-
         private void LoadExams()
         {
             dgvExams.DataSource = null;
@@ -84,6 +82,8 @@ namespace Unicom_TIC_Management_System.View
                     ExamName = e.ExamName,
                     Subject = e.SubjectName
                 }).ToList();
+
+            dgvExams.ClearSelection();
         }
 
         private void btnAddExam_Click(object sender, EventArgs e)

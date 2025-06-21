@@ -4,6 +4,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Unicom_TIC_Management_System.Models;
 using Unicom_TIC_Management_System.Repositories;
 
@@ -14,48 +15,90 @@ namespace Unicom_TIC_Management_System.Controllers
         // Add Room
         public static void AddRoom(Room room)
         {
-            using (var conn = dbConfig.GetConnection())
+            if (string.IsNullOrWhiteSpace(room.RoomName))
             {
-                
-                string query = "INSERT INTO Rooms (RoomName, RoomType) VALUES (@RoomName, @RoomType)";
-                using (var cmd = new SQLiteCommand(query, conn))
+                MessageBox.Show("Room name cannot be empty.", "Validation Error");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(room.RoomType))
+            {
+                MessageBox.Show("Room type cannot be empty.", "Validation Error");
+                return;
+            }
+
+            try
+            {
+                using (var conn = dbConfig.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@RoomName", room.RoomName);
-                    cmd.Parameters.AddWithValue("@RoomType", room.RoomType);
-                    cmd.ExecuteNonQuery();
+                    string query = "INSERT INTO Rooms (RoomName, RoomType) VALUES (@RoomName, @RoomType)";
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@RoomName", room.RoomName);
+                        cmd.Parameters.AddWithValue("@RoomType", room.RoomType);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error adding room: " + ex.Message, "Database Error");
             }
         }
 
         // Update Room
         public static void UpdateRoom(Room room)
         {
-            using (var conn = dbConfig.GetConnection())
+            if (string.IsNullOrWhiteSpace(room.RoomName))
             {
-                
-                string query = "UPDATE Rooms SET RoomName = @RoomName, RoomType = @RoomType WHERE RoomID = @RoomID";
-                using (var cmd = new SQLiteCommand(query, conn))
+                MessageBox.Show("Room name cannot be empty.", "Validation Error");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(room.RoomType))
+            {
+                MessageBox.Show("Room type cannot be empty.", "Validation Error");
+                return;
+            }
+
+            try
+            {
+                using (var conn = dbConfig.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@RoomName", room.RoomName);
-                    cmd.Parameters.AddWithValue("@RoomType", room.RoomType);
-                    cmd.Parameters.AddWithValue("@RoomID", room.RoomID);
-                    cmd.ExecuteNonQuery();
+                    string query = "UPDATE Rooms SET RoomName = @RoomName, RoomType = @RoomType WHERE RoomID = @RoomID";
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@RoomName", room.RoomName);
+                        cmd.Parameters.AddWithValue("@RoomType", room.RoomType);
+                        cmd.Parameters.AddWithValue("@RoomID", room.RoomID);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating room: " + ex.Message, "Database Error");
             }
         }
 
         // Delete Room
         public static void DeleteRoom(int roomId)
         {
-            using (var conn = dbConfig.GetConnection())
+            try
             {
-                
-                string query = "DELETE FROM Rooms WHERE RoomID = @RoomID";
-                using (var cmd = new SQLiteCommand(query, conn))
+                using (var conn = dbConfig.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@RoomID", roomId);
-                    cmd.ExecuteNonQuery();
+                    string query = "DELETE FROM Rooms WHERE RoomID = @RoomID";
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@RoomID", roomId);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting room: " + ex.Message, "Database Error");
             }
         }
 
@@ -63,25 +106,34 @@ namespace Unicom_TIC_Management_System.Controllers
         public static List<Room> GetAllRooms()
         {
             List<Room> rooms = new List<Room>();
-            using (var conn = dbConfig.GetConnection())
+
+            try
             {
-               
-                string query = "SELECT * FROM Rooms";
-                using (var cmd = new SQLiteCommand(query, conn))
-                using (var reader = cmd.ExecuteReader())
+                using (var conn = dbConfig.GetConnection())
                 {
-                    while (reader.Read())
+                    string query = "SELECT * FROM Rooms";
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        rooms.Add(new Room
+                        while (reader.Read())
                         {
-                            RoomID = Convert.ToInt32(reader["RoomID"]),
-                            RoomName = reader["RoomName"].ToString(),
-                            RoomType = reader["RoomType"].ToString()
-                        });
+                            rooms.Add(new Room
+                            {
+                                RoomID = Convert.ToInt32(reader["RoomID"]),
+                                RoomName = reader["RoomName"].ToString(),
+                                RoomType = reader["RoomType"].ToString()
+                            });
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading rooms: " + ex.Message, "Database Error");
+            }
+
             return rooms;
         }
+
     }
 }

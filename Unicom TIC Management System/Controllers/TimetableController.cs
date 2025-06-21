@@ -13,65 +13,132 @@ namespace Unicom_TIC_Management_System.Controllers
 {
     internal class TimetableController
     {
-        //  Add Timetable
+        // ✅ Add a new timetable entry
         public static void AddTimetable(Timetable timetable)
         {
-            using (var conn = dbConfig.GetConnection())
+            // 🔍 Basic validation
+            if (timetable.SubjectID == 0)
             {
-                string query = @"INSERT INTO Timetables (SubjectID, RoomID, TimeSlot, Date) 
-                             VALUES (@SubjectID, @RoomID, @TimeSlot, @Date)";
-                using (var cmd = new SQLiteCommand(query, conn))
+                MessageBox.Show("Please select a subject.", "Validation Error");
+                return;
+            }
+
+            if (timetable.RoomID == 0)
+            {
+                MessageBox.Show("Please select a room.", "Validation Error");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(timetable.TimeSlot))
+            {
+                MessageBox.Show("Please select a time slot.", "Validation Error");
+                return;
+            }
+
+            if (timetable.Date == default)
+            {
+                MessageBox.Show("Please select a valid date.", "Validation Error");
+                return;
+            }
+
+            try
+            {
+                using (var conn = dbConfig.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@SubjectID", timetable.SubjectID);
-                    cmd.Parameters.AddWithValue("@RoomID", timetable.RoomID);
-                    cmd.Parameters.AddWithValue("@TimeSlot", timetable.TimeSlot);
-                    cmd.Parameters.AddWithValue("@Date", timetable.Date);
-                    cmd.ExecuteNonQuery();
+                    string query = @"INSERT INTO Timetables (SubjectID, RoomID, TimeSlot, Date) 
+                                 VALUES (@SubjectID, @RoomID, @TimeSlot, @Date)";
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@SubjectID", timetable.SubjectID);
+                        cmd.Parameters.AddWithValue("@RoomID", timetable.RoomID);
+                        cmd.Parameters.AddWithValue("@TimeSlot", timetable.TimeSlot);
+                        cmd.Parameters.AddWithValue("@Date", timetable.Date.ToString("yyyy-MM-dd"));
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error adding timetable: " + ex.Message, "Database Error");
             }
         }
 
-        //  Update Timetable
+        // ✅ Update existing timetable entry
         public static void UpdateTimetable(Timetable timetable)
         {
-            using (var conn = dbConfig.GetConnection())
+            if (timetable.TimetableID == 0)
             {
-                string query = @"UPDATE Timetables 
-                             SET SubjectID = @SubjectID, RoomID = @RoomID, TimeSlot = @TimeSlot, Date = @Date 
-                             WHERE TimetableID = @TimetableID";
-                using (var cmd = new SQLiteCommand(query, conn))
+                MessageBox.Show("Invalid timetable selected.", "Validation Error");
+                return;
+            }
+
+            if (timetable.SubjectID == 0 || timetable.RoomID == 0 || string.IsNullOrWhiteSpace(timetable.TimeSlot) || timetable.Date == default)
+            {
+                MessageBox.Show("Please complete all timetable details.", "Validation Error");
+                return;
+            }
+
+            try
+            {
+                using (var conn = dbConfig.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@SubjectID", timetable.SubjectID);
-                    cmd.Parameters.AddWithValue("@RoomID", timetable.RoomID);
-                    cmd.Parameters.AddWithValue("@TimeSlot", timetable.TimeSlot);
-                    cmd.Parameters.AddWithValue("@Date", timetable.Date);
-                    cmd.Parameters.AddWithValue("@TimetableID", timetable.TimetableID);
-                    cmd.ExecuteNonQuery();
+                    string query = @"UPDATE Timetables 
+                                 SET SubjectID = @SubjectID, RoomID = @RoomID, TimeSlot = @TimeSlot, Date = @Date 
+                                 WHERE TimetableID = @TimetableID";
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@SubjectID", timetable.SubjectID);
+                        cmd.Parameters.AddWithValue("@RoomID", timetable.RoomID);
+                        cmd.Parameters.AddWithValue("@TimeSlot", timetable.TimeSlot);
+                        cmd.Parameters.AddWithValue("@Date", timetable.Date.ToString("yyyy-MM-dd"));
+                        cmd.Parameters.AddWithValue("@TimetableID", timetable.TimetableID);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating timetable: " + ex.Message, "Database Error");
             }
         }
 
-        //  Delete Timetable
+        // ✅ Delete timetable entry
         public static void DeleteTimetable(int timetableId)
         {
-            using (var conn = dbConfig.GetConnection())
+            if (timetableId == 0)
             {
-                string query = "DELETE FROM Timetables WHERE TimetableID = @TimetableID";
-                using (var cmd = new SQLiteCommand(query, conn))
+                MessageBox.Show("Invalid timetable ID.", "Validation Error");
+                return;
+            }
+
+            try
+            {
+                using (var conn = dbConfig.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@TimetableID", timetableId);
-                    cmd.ExecuteNonQuery();
+                    string query = "DELETE FROM Timetables WHERE TimetableID = @TimetableID";
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TimetableID", timetableId);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting timetable: " + ex.Message, "Database Error");
             }
         }
 
-        //  Get All Timetables (with JOIN)
+        // ✅ Get all timetable entries with JOIN info (Subject, Room)
         public static DataTable GetAllTimetables()
         {
             var dt = new DataTable();
-            using (var conn = dbConfig.GetConnection())
+
+            try
             {
-                string query = @"
+                using (var conn = dbConfig.GetConnection())
+                {
+                    string query = @"
                 SELECT 
                     t.TimetableID,
                     s.SubjectName,
@@ -83,14 +150,22 @@ namespace Unicom_TIC_Management_System.Controllers
                 JOIN Subjects s ON t.SubjectID = s.SubjectID
                 JOIN Rooms r ON t.RoomID = r.RoomID";
 
-                using (var cmd = new SQLiteCommand(query, conn))
-                using (var adapter = new SQLiteDataAdapter(cmd))
-                {
-                    adapter.Fill(dt);
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    using (var adapter = new SQLiteDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading timetables: " + ex.Message, "Database Error");
+            }
+
             return dt;
         }
+
+
     }
         
 }

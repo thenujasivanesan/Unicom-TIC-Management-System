@@ -76,6 +76,20 @@ namespace Unicom_TIC_Management_System.View
                 btnManageLecturers.Visible=false;
                 btnManageStaff.Visible=false;
             }
+            else
+            {
+                // Admin or default role: enable all buttons
+                btnManageUsers.Visible = true;
+                btnManageCourses.Visible = true;
+                btnManageSubjects.Visible = true;
+                btnManageStudents.Visible = true;
+                btnManageRooms.Visible = true;
+                btnManageExams.Visible = true;
+                btnManageMarks.Visible = true;
+                btnManageTimetable.Visible = true;
+                btnManageLecturers.Visible = true;
+                btnManageStaff.Visible = true;
+            }
 
         }
 

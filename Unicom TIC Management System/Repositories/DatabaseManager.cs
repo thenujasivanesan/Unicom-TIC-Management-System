@@ -86,13 +86,6 @@ namespace Unicom_TIC_Management_System.Repositories
                 RoomType TEXT NOT NULL
             );";
 
-                // Create TimeSlots table
-                string TimeSlotsTable = @"
-            CREATE TABLE IF NOT EXISTS TimeSlots (
-                TimeSlotID INTEGER PRIMARY KEY AUTOINCREMENT,
-                StartTime TEXT NOT NULL,
-                EndTime TEXT NOT NULL
-            );";
 
                 // Create Timetables table
                 string TimetablesTable = @"
@@ -106,26 +99,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID)
             );";
 
-                // Create student_subjects table
-                string StudentSubjectsTable = @"
-            CREATE TABLE IF NOT EXISTS student_subjects (
-                StudentSubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
-                StudentID INTEGER,
-                SubjectID INTEGER,
-                FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
-                FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID)
-            );";
-
-                // Create lecturer_subjects table
-                string LecturerSubjectsTable = @"
-            CREATE TABLE IF NOT EXISTS lecturer_subjects (
-                LecturerSubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
-                LecturerID INTEGER,
-                SubjectID INTEGER,
-                FOREIGN KEY (LecturerID) REFERENCES Users(UserID),
-                FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID)
-            );";
-
+                
                 // Create Lecturers table
                 string LecturersTable = @"
             CREATE TABLE IF NOT EXISTS Lecturers (
@@ -175,10 +149,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 ExecuteNonQuery(dbconn, ExamsTable);
                 ExecuteNonQuery(dbconn, MarksTable);
                 ExecuteNonQuery(dbconn, RoomsTable);
-                ExecuteNonQuery(dbconn, TimeSlotsTable);
                 ExecuteNonQuery(dbconn, TimetablesTable);
-                ExecuteNonQuery(dbconn, StudentSubjectsTable);
-                ExecuteNonQuery(dbconn, LecturerSubjectsTable);
                 ExecuteNonQuery(dbconn, LecturersTable);
                 ExecuteNonQuery(dbconn, StaffTable);
 

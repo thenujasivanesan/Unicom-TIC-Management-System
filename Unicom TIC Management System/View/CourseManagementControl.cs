@@ -84,12 +84,7 @@ namespace Unicom_TIC_Management_System.View
 
         private void dgvCourses_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgvCourses.Rows[e.RowIndex];
-                txtCourseName.Text = row.Cells["CourseName"].Value.ToString();
-                
-            } */
+           
         }
 
         private void dgvCourses_CellClick(object sender, DataGridViewCellEventArgs e)

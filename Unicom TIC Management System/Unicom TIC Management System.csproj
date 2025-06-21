@@ -81,7 +81,6 @@
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
-    <Compile Include="Controllers\TimeSlotController.cs" />
     <Compile Include="Controllers\TimetableController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Form1.cs">
@@ -100,7 +99,6 @@
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Subject.cs" />
-    <Compile Include="Models\TimeSlot.cs" />
     <Compile Include="Models\Timetable.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
@@ -131,12 +129,6 @@
     <Compile Include="View\ExamManagementControl.Designer.cs">
       <DependentUpon>ExamManagementControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\LecturerDashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\LecturerDashboard.Designer.cs">
-      <DependentUpon>LecturerDashboard.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\LecturerManagementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,12 +147,6 @@
     <Compile Include="View\MarksManagementControl.Designer.cs">
       <DependentUpon>MarksManagementControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MarksViewerControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\MarksViewerControl.Designer.cs">
-      <DependentUpon>MarksViewerControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Registration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,29 +159,11 @@
     <Compile Include="View\RoomsManagementControl.Designer.cs">
       <DependentUpon>RoomsManagementControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\StaffDashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\StaffDashboard.Designer.cs">
-      <DependentUpon>StaffDashboard.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\StaffManagementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\StaffManagementControl.Designer.cs">
       <DependentUpon>StaffManagementControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\StudentDashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\StudentDashboard.Designer.cs">
-      <DependentUpon>StudentDashboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\StudentHomeControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\StudentHomeControl.Designer.cs">
-      <DependentUpon>StudentHomeControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\StudentManagementControl.cs">
       <SubType>UserControl</SubType>
@@ -214,12 +182,6 @@
     </Compile>
     <Compile Include="View\TimetableManagementControl.Designer.cs">
       <DependentUpon>TimetableManagementControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\TimetableViewerControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\TimetableViewerControl.Designer.cs">
-      <DependentUpon>TimetableViewerControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UserManagementControl.cs">
       <SubType>UserControl</SubType>
@@ -258,9 +220,6 @@
     <EmbeddedResource Include="View\MarksManagementControl.resx">
       <DependentUpon>MarksManagementControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MarksViewerControl.resx">
-      <DependentUpon>MarksViewerControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,12 +229,6 @@
     <EmbeddedResource Include="View\StaffManagementControl.resx">
       <DependentUpon>StaffManagementControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\StudentDashboard.resx">
-      <DependentUpon>StudentDashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\StudentHomeControl.resx">
-      <DependentUpon>StudentHomeControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\StudentManagementControl.resx">
       <DependentUpon>StudentManagementControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,9 +237,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\TimetableManagementControl.resx">
       <DependentUpon>TimetableManagementControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\TimetableViewerControl.resx">
-      <DependentUpon>TimetableViewerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserManagementControl.resx">
       <DependentUpon>UserManagementControl.cs</DependentUpon>

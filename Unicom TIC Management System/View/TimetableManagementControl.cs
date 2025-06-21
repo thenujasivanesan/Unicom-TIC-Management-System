@@ -102,7 +102,7 @@ namespace Unicom_TIC_Management_System.View
                 SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
                 RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
                 TimeSlot = txtTimeSlot.Text.Trim(),
-                Date = datePicker.Value.ToString("yyyy-MM-dd")
+                Date = datePicker.Value
             };
 
             TimetableController.AddTimetable(timetable);
@@ -134,7 +134,7 @@ namespace Unicom_TIC_Management_System.View
                     SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
                     RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
                     TimeSlot = txtTimeSlot.Text.Trim(),
-                    Date = datePicker.Value.ToString("yyyy-MM-dd")
+                    Date = datePicker.Value
                 };
 
                 TimetableController.UpdateTimetable(timetable);
