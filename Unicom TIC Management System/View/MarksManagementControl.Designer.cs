@@ -41,6 +41,7 @@
             this.txtScore = new System.Windows.Forms.TextBox();
             this.lblSubject = new System.Windows.Forms.Label();
             this.cmbSubject = new System.Windows.Forms.ComboBox();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -199,10 +200,21 @@
             this.cmbSubject.Size = new System.Drawing.Size(121, 24);
             this.cmbSubject.TabIndex = 3;
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(688, 374);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 5;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // MarksManagementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.cmbSubject);
             this.Controls.Add(this.cmbExam);
@@ -241,5 +253,6 @@
         private System.Windows.Forms.TextBox txtScore;
         private System.Windows.Forms.Label lblSubject;
         private System.Windows.Forms.ComboBox cmbSubject;
+        private System.Windows.Forms.Button btnBack;
     }
 }

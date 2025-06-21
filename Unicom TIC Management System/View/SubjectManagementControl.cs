@@ -17,9 +17,13 @@ namespace Unicom_TIC_Management_System.View
 {
     public partial class SubjectManagementControl : UserControl
     {
-        public SubjectManagementControl()
+        private int userId;
+        private string role;
+        public SubjectManagementControl(int userId, string role)
         {
             InitializeComponent();
+            this.userId = userId;
+            this.role = role;
         }
 
         private void SubjectManagementControl_Load(object sender, EventArgs e)
@@ -144,6 +148,16 @@ namespace Unicom_TIC_Management_System.View
         private void cmbCourses_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            var parentForm = this.FindForm() as AdminDashboard;
+            if (parentForm != null)
+            {
+                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                parentForm.LoadControlInPanel(homeControl);
+            }
         }
     }
 }

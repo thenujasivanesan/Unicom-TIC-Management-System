@@ -45,6 +45,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.dgvLecturers = new System.Windows.Forms.DataGridView();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLecturers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,10 +224,21 @@
             this.dgvLecturers.TabIndex = 5;
             this.dgvLecturers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLecturers_CellClick);
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(709, 324);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 6;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // LecturerManagementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dgvLecturers);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
@@ -272,5 +284,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.DataGridView dgvLecturers;
+        private System.Windows.Forms.Button btnBack;
     }
 }

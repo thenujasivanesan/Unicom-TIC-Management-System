@@ -14,9 +14,16 @@ namespace Unicom_TIC_Management_System.View
 {
     public partial class CourseManagementControl : UserControl
     {
-        public CourseManagementControl()
+        private int userId;
+        private string role;
+
+        public CourseManagementControl(int userId, string role)
         {
             InitializeComponent();
+
+            this.userId = userId;
+            this.role = role;
+
         }
 
         private void CourseControl_Load(object sender, EventArgs e)
@@ -94,6 +101,17 @@ namespace Unicom_TIC_Management_System.View
                 DataGridViewRow row = dgvCourses.Rows[e.RowIndex];
                 txtCourseName.Text = row.Cells["CourseName"].Value.ToString();
                 
+            }
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            var parentForm = this.FindForm() as AdminDashboard;
+            if (parentForm != null)
+            {
+                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                parentForm.LoadControlInPanel(homeControl);
             }
 
         }

@@ -41,6 +41,7 @@
             this.txtTimeSlot = new System.Windows.Forms.TextBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.lblDate = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimetable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -199,10 +200,21 @@
             this.lblDate.TabIndex = 0;
             this.lblDate.Text = "Date";
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(743, 319);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 8;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // TimetableManagementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.datePicker);
             this.Controls.Add(this.txtTimeSlot);
             this.Controls.Add(this.dgvTimetable);
@@ -241,5 +253,6 @@
         private System.Windows.Forms.TextBox txtTimeSlot;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Button btnBack;
     }
 }

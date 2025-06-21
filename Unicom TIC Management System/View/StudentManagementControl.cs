@@ -16,9 +16,15 @@ namespace Unicom_TIC_Management_System.View
 {
     public partial class StudentManagementControl : UserControl
     {
-        public StudentManagementControl()
+        private int userId;
+        private string role;
+
+        public StudentManagementControl(int userId, string role)
         {
             InitializeComponent();
+
+            this.userId = userId;
+            this.role = role;
         }
 
         private void StudentManagementControl_Load(object sender, EventArgs e)
@@ -213,6 +219,16 @@ namespace Unicom_TIC_Management_System.View
         private void lblGender_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBack_Click_1(object sender, EventArgs e)
+        {
+            var parentForm = this.FindForm() as AdminDashboard;
+            if (parentForm != null)
+            {
+                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                parentForm.LoadControlInPanel(homeControl);
+            }
         }
     }
 }

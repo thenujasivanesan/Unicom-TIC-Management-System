@@ -99,7 +99,7 @@ namespace Unicom_TIC_Management_System.View
         }
 
 
-        private void LoadControlInPanel(UserControl control)
+        public void LoadControlInPanel(UserControl control)
         {
             panelMainContent.Controls.Clear();        // Remove old content
             control.Dock = DockStyle.Fill;            // Make it fill the panel
@@ -122,22 +122,22 @@ namespace Unicom_TIC_Management_System.View
 
         private void btnManageUsers_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new UserManagementControl());
+            LoadUserControl(new UserManagementControl(userId, role));
         }
 
         private void btnManageCourses_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new CourseManagementControl());
+            LoadUserControl(new CourseManagementControl(userId, role));
         }
 
         private void btnManageSubjects_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new SubjectManagementControl());
+            LoadUserControl(new SubjectManagementControl(userId, role));
         }
 
         private void btnManageStudents_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new StudentManagementControl());
+            LoadUserControl(new StudentManagementControl(userId, role));
 
         }
 
@@ -154,7 +154,7 @@ namespace Unicom_TIC_Management_System.View
 
         private void btnManageRooms_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new RoomsManagementControl());
+            LoadUserControl(new RoomsManagementControl(userId, role));
         }
 
         private void btnManageTimetable_Click(object sender, EventArgs e)
@@ -174,13 +174,13 @@ namespace Unicom_TIC_Management_System.View
 
         private void btnManageLecturers_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new LecturerManagementControl());
+            LoadUserControl(new LecturerManagementControl(userId, role));
 
         }
 
         private void btnManageStaff_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new StaffManagementControl());
+            LoadUserControl(new StaffManagementControl(userId, role));
 
         }
     }

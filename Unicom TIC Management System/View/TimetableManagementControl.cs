@@ -61,11 +61,7 @@ namespace Unicom_TIC_Management_System.View
                 LoadTimetables();
             }
 
-            
-
-
         }
-
         private void LoadSubjects()
         {
             cmbSubject.DataSource = SubjectController.GetAllSubjects(); // Already working
@@ -88,7 +84,6 @@ namespace Unicom_TIC_Management_System.View
             dgvTimetable.Columns["Date"].DisplayIndex = 0; // show first
 
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (cmbSubject.SelectedIndex == -1 || cmbRoom.SelectedIndex == -1 || string.IsNullOrWhiteSpace(txtTimeSlot.Text))
@@ -111,7 +106,6 @@ namespace Unicom_TIC_Management_System.View
             ClearFields();
         }
 
-
         private void dgvTimetable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -123,7 +117,6 @@ namespace Unicom_TIC_Management_System.View
                 datePicker.Value = DateTime.Parse(row.Cells["Date"].Value.ToString());
             }
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dgvTimetable.SelectedRows.Count > 0)
@@ -155,8 +148,6 @@ namespace Unicom_TIC_Management_System.View
             }
         }
 
-        
-
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();
@@ -183,6 +174,16 @@ namespace Unicom_TIC_Management_System.View
         private void txtTimeSlot_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            var parentForm = this.FindForm() as AdminDashboard;
+            if (parentForm != null)
+            {
+                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                parentForm.LoadControlInPanel(homeControl);
+            }
         }
     }
 }

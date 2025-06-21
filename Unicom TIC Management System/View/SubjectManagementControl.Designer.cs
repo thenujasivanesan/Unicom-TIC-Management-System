@@ -39,6 +39,7 @@
             this.dgvSubjects = new System.Windows.Forms.DataGridView();
             this.cmbLecturer = new System.Windows.Forms.ComboBox();
             this.lblLecturer = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjects)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,10 +170,21 @@
             this.lblLecturer.TabIndex = 8;
             this.lblLecturer.Text = "Lecturer";
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(622, 377);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 9;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // SubjectManagementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblLecturer);
             this.Controls.Add(this.cmbLecturer);
             this.Controls.Add(this.dgvSubjects);
@@ -207,5 +219,6 @@
         private System.Windows.Forms.DataGridView dgvSubjects;
         private System.Windows.Forms.ComboBox cmbLecturer;
         private System.Windows.Forms.Label lblLecturer;
+        private System.Windows.Forms.Button btnBack;
     }
 }

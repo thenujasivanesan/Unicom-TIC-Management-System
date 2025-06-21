@@ -408,5 +408,15 @@ namespace Unicom_TIC_Management_System.View
         {
 
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            var parentForm = this.FindForm() as AdminDashboard;
+            if (parentForm != null)
+            {
+                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                parentForm.LoadControlInPanel(homeControl);
+            }
+        }
     }
 }

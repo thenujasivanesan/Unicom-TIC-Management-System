@@ -51,6 +51,7 @@
             this.dgvStudents = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbUsers = new System.Windows.Forms.ComboBox();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.SuspendLayout();
             // 
@@ -295,10 +296,21 @@
             this.cmbUsers.TabIndex = 2;
             this.cmbUsers.SelectedIndexChanged += new System.EventHandler(this.cmbUsers_SelectedIndexChanged);
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(671, 338);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 7;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click_1);
+            // 
             // StudentManagementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dgvStudents);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnClear);
@@ -357,5 +369,6 @@
         private System.Windows.Forms.DataGridView dgvStudents;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbUsers;
+        private System.Windows.Forms.Button btnBack;
     }
 }
