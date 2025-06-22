@@ -14,7 +14,6 @@ namespace Unicom_TIC_Management_System.Controllers
     {
         public static void AddMark(Mark mark)
         {
-            // Basic validation
             if (mark.StudentId <= 0)
             {
                 MessageBox.Show("Please select a valid student.", "Validation Error");
@@ -27,6 +26,7 @@ namespace Unicom_TIC_Management_System.Controllers
                 return;
             }
 
+            // validating that the score is within 0 - 100
             if (mark.Score < 0 || mark.Score > 100)
             {
                 MessageBox.Show("Score must be between 0 and 100.", "Validation Error");
@@ -55,7 +55,7 @@ namespace Unicom_TIC_Management_System.Controllers
 
         public static void UpdateMark(Mark mark)
         {
-            // Same validation as AddMark
+            
             if (mark.StudentId <= 0)
             {
                 MessageBox.Show("Please select a valid student.", "Validation Error");
@@ -114,7 +114,6 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("Error deleting mark: " + ex.Message, "Database Error");
             }
         }
-
         public static List<Mark> GetAllMarks()
         {
             var list = new List<Mark>();

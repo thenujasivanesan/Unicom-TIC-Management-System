@@ -11,6 +11,7 @@ namespace Unicom_TIC_Management_System.Controllers
 {
     internal class DatabaseChecker
     {
+        // checking if an Admin user is already registered in the Users table
         public static bool IsAdminRegistered()
         {
             try

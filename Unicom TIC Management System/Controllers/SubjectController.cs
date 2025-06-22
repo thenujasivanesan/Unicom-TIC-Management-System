@@ -12,10 +12,8 @@ namespace Unicom_TIC_Management_System.Controllers
 {
     internal class SubjectController
     {
-        // ✅ Add new subject
         public static void AddSubject(Subject subject)
         {
-            // ✅ Basic validation
             if (string.IsNullOrWhiteSpace(subject.SubjectName))
             {
                 MessageBox.Show("Subject name is required.", "Validation Error");
@@ -54,7 +52,6 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // ✅ Update existing subject
         public static void UpdateSubject(Subject subject)
         {
             if (string.IsNullOrWhiteSpace(subject.SubjectName))
@@ -89,8 +86,6 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("Error updating subject: " + ex.Message, "Database Error");
             }
         }
-
-        // ✅ Delete a subject
         public static void DeleteSubject(int subjectId)
         {
             try
@@ -111,7 +106,7 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // ✅ Get all subjects with their course name (and lecturer if needed)
+        //  getting all subjects with their course name 
         public static List<Subject> GetAllSubjects()
         {
             var list = new List<Subject>();

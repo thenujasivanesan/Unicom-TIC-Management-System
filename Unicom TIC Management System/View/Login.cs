@@ -65,7 +65,6 @@ namespace Unicom_TIC_Management_System.View
             // Reseting password hiding
             txtPassword2.PasswordChar = '*'; 
 
-
             //Setting focus back to Username
             txtUsername2.Focus();
 

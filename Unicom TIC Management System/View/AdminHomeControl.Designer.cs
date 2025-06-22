@@ -42,9 +42,9 @@
             this.lblWelcome.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblWelcome.Location = new System.Drawing.Point(221, 164);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(39, 47);
+            this.lblWelcome.Size = new System.Drawing.Size(187, 47);
             this.lblWelcome.TabIndex = 1;
-            this.lblWelcome.Text = "c";
+            this.lblWelcome.Text = "Welcome";
             this.lblWelcome.Click += new System.EventHandler(this.lblWelcome_Click);
             // 
             // lblSummary
@@ -54,9 +54,9 @@
             this.lblSummary.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblSummary.Location = new System.Drawing.Point(84, 266);
             this.lblSummary.Name = "lblSummary";
-            this.lblSummary.Size = new System.Drawing.Size(32, 47);
+            this.lblSummary.Size = new System.Drawing.Size(197, 47);
             this.lblSummary.TabIndex = 2;
-            this.lblSummary.Text = "l";
+            this.lblSummary.Text = "Summary";
             this.lblSummary.Click += new System.EventHandler(this.lblSummary_Click);
             // 
             // panel1

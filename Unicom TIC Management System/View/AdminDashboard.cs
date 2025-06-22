@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using Unicom_TIC_Management_System.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -14,8 +15,8 @@ namespace Unicom_TIC_Management_System.View
 {
     public partial class AdminDashboard : Form
     {
-        private int userId;
-        private string role;
+        private int userId;      // Stores current logged-in user ID
+        private string role;       // Stores current logged in user role
 
 
         public AdminDashboard(int userId, string role)
@@ -28,12 +29,12 @@ namespace Unicom_TIC_Management_System.View
             ApplyRoleRestrictions();
         }
 
-
+        // this method hides or shows buttons based on the user's role
         private void ApplyRoleRestrictions()
         {
             if (role == "Student")
             {
-                // Hide or disable admin-only buttons
+                // Students can view marks and timetable
                 btnManageUsers.Visible = false;
                 btnManageCourses.Visible = false;
                 btnManageSubjects.Visible = false;
@@ -49,7 +50,7 @@ namespace Unicom_TIC_Management_System.View
             
             else if (role == "Lecturer")
             {
-
+                // lect5urers can manage their subject marks and  view timetable
                 btnManageUsers.Visible = false;
                 btnManageCourses.Visible = false;
                 btnManageSubjects.Visible = false;
@@ -64,7 +65,7 @@ namespace Unicom_TIC_Management_System.View
 
             else if (role == "Staff")
             {
-
+               // staff can manage exams, marks and timetable
                 btnManageUsers.Visible = false;
                 btnManageCourses.Visible = false;
                 btnManageSubjects.Visible = false;
@@ -78,7 +79,7 @@ namespace Unicom_TIC_Management_System.View
             }
             else
             {
-                // Admin or default role: enable all buttons
+                // Admin can manage everything
                 btnManageUsers.Visible = true;
                 btnManageCourses.Visible = true;
                 btnManageSubjects.Visible = true;
@@ -101,10 +102,10 @@ namespace Unicom_TIC_Management_System.View
 
         public void LoadControlInPanel(UserControl control)
         {
-            panelMainContent.Controls.Clear();        // Remove old content
-            control.Dock = DockStyle.Fill;            // Make it fill the panel
-            panelMainContent.Controls.Add(control);   // Show it
-            control.BringToFront();                   // Bring to front
+            panelMainContent.Controls.Clear();        // Removes old content
+            control.Dock = DockStyle.Fill;            // Makes it fill the panel
+            panelMainContent.Controls.Add(control);   // Shows it
+            control.BringToFront();                   // Brings to front
         }
 
 
@@ -115,11 +116,12 @@ namespace Unicom_TIC_Management_System.View
 
         private void LoadUserControl(UserControl control)
         {
-            panelMainContent.Controls.Clear();          // Remove old content
-            control.Dock = DockStyle.Fill;       // Fill the panel
-            panelMainContent.Controls.Add(control);     // Add new content
+            panelMainContent.Controls.Clear();          // Removes old content
+            control.Dock = DockStyle.Fill;       // Fills the panel
+            panelMainContent.Controls.Add(control);     // Adds new content
         }
 
+        // button click handl3ers to load appropriate management controls
         private void btnManageUsers_Click(object sender, EventArgs e)
         {
             LoadUserControl(new UserManagementControl(userId, role));
@@ -164,11 +166,10 @@ namespace Unicom_TIC_Management_System.View
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            // Show the Login Form again
+            // Shows the Login Form again
             Login loginForm = new Login();
             loginForm.Show();
 
-            // Close the current Dashboard
             this.Close();
         }
 

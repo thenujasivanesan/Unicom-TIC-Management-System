@@ -12,7 +12,7 @@ namespace Unicom_TIC_Management_System.Controllers
 {
     internal class UserController
     {
-        // Add new user with validation and error handling
+        // this returns true if successful and false otherwise
         public static bool AddUser(User user)
         {
             if (string.IsNullOrWhiteSpace(user.Username))
@@ -20,6 +20,7 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("Username cannot be empty.", "Validation Error");
                 return false;
             }
+            // validating password is not empty and at least 6 characters long
             if (string.IsNullOrWhiteSpace(user.Password) || user.Password.Length < 6)
             {
                 MessageBox.Show("Password must be at least 6 characters.", "Validation Error");
@@ -68,7 +69,6 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // Update existing user with validation and error handling
         public static bool UpdateUser(User user)
         {
             if (user.UserId <= 0)
@@ -115,7 +115,6 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // Delete user with validation and error handling
         public static bool DeleteUser(int id)
         {
             if (id <= 0)
@@ -143,8 +142,6 @@ namespace Unicom_TIC_Management_System.Controllers
                 return false;
             }
         }
-
-        // Retrieve all users with error handling
         public static List<User> GetAllUsers()
         {
             var list = new List<User>();

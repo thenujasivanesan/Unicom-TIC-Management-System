@@ -13,7 +13,7 @@ namespace Unicom_TIC_Management_System.Controllers
 {
     internal class StudentController
     {
-        // ✅ Helper method to check if email format is valid
+        // email validity helper
         private static bool IsValidEmail(string email)
         {
             try
@@ -27,10 +27,9 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // ✅ Add new student to the database
         public static void AddStudent(Student student)
         {
-            // Basic validations
+            // basic validations
             if (string.IsNullOrWhiteSpace(student.FirstName))
             {
                 MessageBox.Show("First name is required.", "Validation Error");
@@ -97,10 +96,8 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // ✅ Update existing student record
         public static void UpdateStudent(Student student)
         {
-            // Same validations as Add
             if (string.IsNullOrWhiteSpace(student.FirstName))
             {
                 MessageBox.Show("First name is required.", "Validation Error");
@@ -175,7 +172,6 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // ✅ Delete student by ID
         public static void DeleteStudent(int id)
         {
             try
@@ -196,7 +192,6 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // ✅ Get all students and their course names
         public static List<Student> GetAllStudents()
         {
             var list = new List<Student>();
@@ -239,7 +234,6 @@ namespace Unicom_TIC_Management_System.Controllers
 
             return list;
         }
-
 
     }
 }

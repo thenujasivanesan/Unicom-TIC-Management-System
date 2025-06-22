@@ -14,7 +14,7 @@ namespace Unicom_TIC_Management_System.Controllers
     {
         public bool Register(User user)
         {
-            // Basic validation
+            // basic validations
             if (string.IsNullOrWhiteSpace(user.Username))
             {
                 MessageBox.Show("Username cannot be empty.", "Validation Error");

@@ -13,7 +13,7 @@ namespace Unicom_TIC_Management_System.Controllers
 {
     internal class StaffController
     {
-        //  Email validation helper
+        // email validation helper
         private static bool IsValidEmail(string email)
         {
             try
@@ -26,8 +26,6 @@ namespace Unicom_TIC_Management_System.Controllers
                 return false;
             }
         }
-
-        //  Add staff
         public static void AddStaff(Staff staff)
         {
             if (string.IsNullOrWhiteSpace(staff.FirstName))
@@ -91,7 +89,6 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // ✅ Update staff
         public static void UpdateStaff(Staff staff)
         {
             if (string.IsNullOrWhiteSpace(staff.FirstName))
@@ -161,8 +158,6 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("Error updating staff: " + ex.Message, "Database Error");
             }
         }
-
-        // ✅ Delete staff
         public static void DeleteStaff(int staffId)
         {
             try
@@ -184,7 +179,6 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // ✅ Get all staff
         public static List<Staff> GetAllStaff()
         {
             var list = new List<Staff>();

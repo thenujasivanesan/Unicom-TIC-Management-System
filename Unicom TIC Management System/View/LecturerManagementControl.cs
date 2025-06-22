@@ -35,7 +35,7 @@ namespace Unicom_TIC_Management_System.View
             LoadLecturers();
         }
 
-
+        // Loads all lecturer-role users who are not already assigned as lecturers.
         private void LoadUsers(int? selectedUserId = null)
         {
             using (var conn = dbConfig.GetConnection())
@@ -46,7 +46,7 @@ namespace Unicom_TIC_Management_System.View
             WHERE Role = 'Lecturer' 
             AND UserId NOT IN (SELECT UserId FROM Lecturers)";
 
-                // Allow selected lecturer’s current user to remain in list when editing
+                // Allosw elected lecturer’s current user to remain in list when editing
                 if (selectedUserId.HasValue)
                 {
                     query += $" OR UserId = {selectedUserId.Value}";
@@ -186,7 +186,7 @@ namespace Unicom_TIC_Management_System.View
             var parentForm = this.FindForm() as AdminDashboard;
             if (parentForm != null)
             {
-                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                var homeControl = new AdminHomeControl(userId, role);  
                 parentForm.LoadControlInPanel(homeControl);
             }
         }

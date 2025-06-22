@@ -15,7 +15,7 @@ namespace Unicom_TIC_Management_System.Controllers
     {
         public LoginInfo Login(string username, string password)
         {
-            // Basic validation
+            // Checking if username or password is empty
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 return null;
@@ -25,12 +25,14 @@ namespace Unicom_TIC_Management_System.Controllers
             {
                 using (var conn = dbConfig.GetConnection())
                 {
+                    // SQL query to match username and password
                     var cmd = new SQLiteCommand("SELECT UserId, Username, Role FROM Users WHERE Username=@u AND Password=@p", conn);
                     cmd.Parameters.AddWithValue("@u", username);
                     cmd.Parameters.AddWithValue("@p", password);
 
                     using (var reader = cmd.ExecuteReader())
                     {
+                        // if matching user found this reads and returns login infos
                         if (reader.Read())
                         {
                             return new LoginInfo
@@ -42,8 +44,7 @@ namespace Unicom_TIC_Management_System.Controllers
                         }
                     }
                 }
-
-                
+                // if no match found returns null
                 return null;
             }
             catch (Exception ex)

@@ -34,9 +34,6 @@ namespace Unicom_TIC_Management_System.View
             ClearFields();
 
         }
-
-
-
         private void LoadLecturers()
         {
             using (var conn = dbConfig.GetConnection())
@@ -155,7 +152,7 @@ namespace Unicom_TIC_Management_System.View
             var parentForm = this.FindForm() as AdminDashboard;
             if (parentForm != null)
             {
-                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                var homeControl = new AdminHomeControl(userId, role); 
                 parentForm.LoadControlInPanel(homeControl);
             }
         }

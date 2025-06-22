@@ -42,6 +42,7 @@ namespace Unicom_TIC_Management_System.View
                 return;
             }
 
+         // Create new Admin user(first run logic)
             var user = new User
             {
                 Username = username,
@@ -56,13 +57,15 @@ namespace Unicom_TIC_Management_System.View
             {
                 MessageBox.Show("Registration successful! Please login.");
                 this.Hide();
-                new Login().Show();
+                new Login().Show();    // Redirect to login
             }
             else
             {
                 MessageBox.Show("Registration failed. Username might already exist.");
             }
         }
+
+       // password visibility
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -91,8 +94,6 @@ namespace Unicom_TIC_Management_System.View
             // Reseting password masking 
             txtPassword.PasswordChar = '*';
             txtConfirmPassword.PasswordChar = '*';
-
-            
 
             // setting focus back to username field
             txtUsername.Focus();

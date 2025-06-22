@@ -21,6 +21,7 @@ namespace Unicom_TIC_Management_System.View
 
         private int lecturerId = -1;
 
+        // Constructor with role-based subject filter event
         public MarksManagementControl(int userId , string role)
         {
             InitializeComponent();
@@ -32,13 +33,10 @@ namespace Unicom_TIC_Management_System.View
 
         private void MarksManagementControl_Load(object sender, EventArgs e)
         {
-            //LoadStudents();
-            //LoadExams();
-
-            //LoadSubjects();
 
             if (role == "Student")
             {
+                // If Student hide all controls and show only their marks
                 btnAdd.Visible = false;
                 btnUpdate.Visible = false;
                 btnDelete.Visible = false;
@@ -59,6 +57,8 @@ namespace Unicom_TIC_Management_System.View
 
             else if (role == "Lecturer")
             {
+                // If Lecturer, loads nly their assigned data
+
                 Lecturer lecturer = LecturerController.GetLecturerByUserId(userId);
                 if (lecturer != null)
                 {
@@ -72,6 +72,7 @@ namespace Unicom_TIC_Management_System.View
 
             else
             {
+                // If Admin or Staff, loads verything
                 LoadStudents();
                 LoadExams();
                 LoadSubjects();
@@ -79,15 +80,12 @@ namespace Unicom_TIC_Management_System.View
             }
             
         }
-        
-        
 
+        // Load marks for the currently logged-in student
         private void LoadMarksForStudent(int userId)
         {
             using (var conn = dbConfig.GetConnection())
             {   
-
-                // Step 1: Get StudentId using UserId
                 string getStudentIdQuery = "SELECT StudentId FROM Students WHERE UserId = @userId";
                 using (var cmd = new SQLiteCommand(getStudentIdQuery, conn))
                 {
@@ -98,7 +96,7 @@ namespace Unicom_TIC_Management_System.View
                     {
                         int studentId = Convert.ToInt32(result);
 
-                        // Step 2: Get marks for that StudentId
+                        //Get marks for that StudentId
                         string getMarksQuery = @"
                     SELECT m.Score, e.ExamName, s.SubjectName
                     FROM Marks m
@@ -124,7 +122,6 @@ namespace Unicom_TIC_Management_System.View
                 }
             }
         }
-
         private void LoadSubjects()
         {
             using (var conn = dbConfig.GetConnection())
@@ -160,7 +157,6 @@ namespace Unicom_TIC_Management_System.View
                 }
             }
         }
-
         private void LoadExams()
         {
             using (var conn = dbConfig.GetConnection())
@@ -178,7 +174,7 @@ namespace Unicom_TIC_Management_System.View
                 }
             }
         }
-
+        // Load exams filtered by SubjectId 
         private void LoadExams(int subjectId)
         {
             using (var conn = dbConfig.GetConnection())
@@ -200,14 +196,14 @@ namespace Unicom_TIC_Management_System.View
             }
         }
 
-
+        // Loads all marks (Admin/Staff)
         private void LoadMarks()
         {
             dgvMarks.DataSource = null;
             dgvMarks.DataSource = MarkController.GetAllMarks();
         }
 
-
+        // Loads subjects assigned to the logged-in lecturer
         private void LoadSubjects(int lecturerId)
         {
             using (var conn = dbConfig.GetConnection())
@@ -227,7 +223,7 @@ namespace Unicom_TIC_Management_System.View
                 }
             }
         }
-
+        // Loads students based on the lecturer's assigned subjects and courses
         private void LoadStudents(int lecturerId)
         {
             using (var conn = dbConfig.GetConnection())
@@ -253,7 +249,7 @@ namespace Unicom_TIC_Management_System.View
                 }
             }
         }
-
+        // Load only the marks associated with the lecturer’s subjects
         private void LoadMarksForLecturer(int lecturerId)
         {
             using (var conn = dbConfig.GetConnection())
@@ -415,7 +411,7 @@ namespace Unicom_TIC_Management_System.View
             var parentForm = this.FindForm() as AdminDashboard;
             if (parentForm != null)
             {
-                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                var homeControl = new AdminHomeControl(userId, role); 
                 parentForm.LoadControlInPanel(homeControl);
             }
         }

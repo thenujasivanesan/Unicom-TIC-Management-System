@@ -14,6 +14,7 @@ namespace Unicom_TIC_Management_System.Controllers
     {
         public static void AddCourse(Course course)
         {
+            // checking if course name is empty
             if (string.IsNullOrWhiteSpace(course.CourseName))
             {
                 MessageBox.Show("Course name cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -22,9 +23,9 @@ namespace Unicom_TIC_Management_System.Controllers
 
             try
             {
-
                 using (var conn = dbConfig.GetConnection())
                 {
+                    // this is the insert query for adding course
                     string query = "INSERT INTO Courses (CourseName) VALUES (@CourseName)";
                     using (var cmd = new SQLiteCommand(query, conn))
                     {
@@ -40,7 +41,6 @@ namespace Unicom_TIC_Management_System.Controllers
 
             }
         }
-        
 
         public static void UpdateCourse(Course course)
         {
@@ -69,9 +69,8 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("Error updating course: " + ex.Message);
             }
 
-
         }
-
+        // this is to delete a course based on its ID
         public static void DeleteCourse(int id)
         {
             try

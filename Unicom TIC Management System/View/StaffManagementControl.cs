@@ -39,13 +39,13 @@ namespace Unicom_TIC_Management_System.View
         {
             using (var conn = dbConfig.GetConnection())
             {
-                // Base query: Select all staff users NOT already assigned to Staff table
+                // Select all staff users NOT already assigned to Staff table
                 string query = @"
             SELECT UserId, Username FROM Users 
             WHERE Role = 'Staff' 
             AND UserId NOT IN (SELECT UserId FROM Staff)";
 
-                // If we have a selectedUserId (editing), add it back to the list using UNION
+                // If we have a selectedUserId (editing add it back to the list using UNION
                 if (selectedUserId.HasValue)
                 {
                     query = $@"
@@ -159,7 +159,7 @@ namespace Unicom_TIC_Management_System.View
                 DataGridViewRow row = dgvStaff.Rows[e.RowIndex];
 
                 int selectedUserId = Convert.ToInt32(row.Cells["UserId"].Value);
-                LoadUsers(selectedUserId);  // includes the current user so it doesn't disappear
+                LoadUsers(selectedUserId);  
                 cmbUsers.SelectedValue = selectedUserId;
                 cmbUsers.SelectedValue = Convert.ToInt32(row.Cells["UserId"].Value);
                 txtFirstName.Text = row.Cells["FirstName"].Value.ToString();
@@ -189,7 +189,7 @@ namespace Unicom_TIC_Management_System.View
             var parentForm = this.FindForm() as AdminDashboard;
             if (parentForm != null)
             {
-                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                var homeControl = new AdminHomeControl(userId, role); 
                 parentForm.LoadControlInPanel(homeControl);
             }
         }

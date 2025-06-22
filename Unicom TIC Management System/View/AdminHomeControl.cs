@@ -26,7 +26,7 @@ namespace Unicom_TIC_Management_System.View
 
         private void AdminHomeControl_Load(object sender, EventArgs e)
         {
-            
+            // Displays the summary infos based on user role
 
             if (role == "Admin")
             {
@@ -46,6 +46,7 @@ namespace Unicom_TIC_Management_System.View
             }
         }
 
+        // ADMIN: Shows counts of total students, lecturers, and staff
         private void ShowAdminSummary()
         {
             using (var conn = dbConfig.GetConnection())
@@ -64,6 +65,7 @@ namespace Unicom_TIC_Management_System.View
                 lblSummary.Text = $"📚 Total Students: {totalStudents}\n👨‍🏫 Lecturers: {totalLecturers}\n👩‍💼 Staff: {totalStaff}";
             }
         }
+        // LECTURER: Shows lecturer personal infos from Lecturers table
         private void ShowLecturerInfo()
         {
             using (var conn = dbConfig.GetConnection())
@@ -98,7 +100,7 @@ namespace Unicom_TIC_Management_System.View
             }
         }
 
-
+        // STAFF: Shows staff personal info from Staff table
         private void ShowStaffInfo()
         {
             using (var conn = dbConfig.GetConnection())
@@ -146,6 +148,7 @@ namespace Unicom_TIC_Management_System.View
             }
         }
 
+        //  STUDENT: Shows student personal info and course details
         private void ShowStudentInfo()
         {
             using (var conn = dbConfig.GetConnection())
@@ -196,8 +199,6 @@ namespace Unicom_TIC_Management_System.View
                 }
             }
         }
-
-
 
         private void lblWelcome_Click(object sender, EventArgs e)
         {

@@ -9,12 +9,13 @@ namespace Unicom_TIC_Management_System.Repositories
 {
     internal class DatabaseManager
     {
+        // creating all necessary tables if they don't exist
         public static void InitializeDatabase()
         {
             using(var dbconn = dbConfig.GetConnection()) 
             {
              
-                // Create Users table
+                // Creating Users table
                 string UsersTable = @"
             CREATE TABLE IF NOT EXISTS Users (
                 UserId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -23,14 +24,14 @@ namespace Unicom_TIC_Management_System.Repositories
                 Role TEXT NOT NULL
             );";
 
-                // Create Courses table
+                // Creating Courses table
                 string CoursesTable = @"
             CREATE TABLE IF NOT EXISTS Courses (
                 CourseID INTEGER PRIMARY KEY AUTOINCREMENT,
                 CourseName TEXT NOT NULL
             );";
 
-                // Create Subjects table
+                // Creating Subjects table
                 string SubjectsTable = @"
             CREATE TABLE IF NOT EXISTS Subjects (
                 SubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -40,7 +41,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
             );";
 
-                // Create Students table
+                // Creating Students table
                 string StudentsTable = @"
             CREATE TABLE IF NOT EXISTS Students (
                 StudentId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -58,7 +59,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 FOREIGN KEY (CourseId) REFERENCES Courses(CourseId)
             );";
 
-                // Create Exams table
+                // Creating Exams table
                 string ExamsTable = @"
             CREATE TABLE IF NOT EXISTS Exams (
                 ExamID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -67,7 +68,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID)
             );";
 
-                // Create Marks table
+                // Creating Marks table
                 string MarksTable = @"
             CREATE TABLE IF NOT EXISTS Marks (
                 MarkID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -78,7 +79,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 FOREIGN KEY (ExamID) REFERENCES Exams(ExamID)
             );";
 
-                // Create Rooms table
+                // Creating Rooms table
                 string RoomsTable = @"
             CREATE TABLE IF NOT EXISTS Rooms (
                 RoomID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -87,7 +88,7 @@ namespace Unicom_TIC_Management_System.Repositories
             );";
 
 
-                // Create Timetables table
+                // Creating Timetables table
                 string TimetablesTable = @"
             CREATE TABLE IF NOT EXISTS Timetables (
                 TimetableID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -100,7 +101,7 @@ namespace Unicom_TIC_Management_System.Repositories
             );";
 
                 
-                // Create Lecturers table
+                // Creating Lecturers table
                 string LecturersTable = @"
             CREATE TABLE IF NOT EXISTS Lecturers (
                 LecturerId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -113,7 +114,7 @@ namespace Unicom_TIC_Management_System.Repositories
                 FOREIGN KEY (UserId) REFERENCES Users(UserId)
             );";
 
-
+                // creating staff table
                 string StaffTable = @"
             CREATE TABLE IF NOT EXISTS Staff (
                 StaffId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -127,19 +128,6 @@ namespace Unicom_TIC_Management_System.Repositories
                 Address TEXT,
                 FOREIGN KEY (UserId) REFERENCES Users(UserId)
             );";
-
-
-
-
-
-
-                // Execute the SQL commands to create tables
-
-                //sqlitecommand cmd = new sqlitecommand(createuserstable);
-                //cmd.executenonquery();
-
-                //sqlitecommand cmd = new sqlitecommand(createcoursestable);
-                //cmd.executenonquery();
 
 
                 ExecuteNonQuery(dbconn, UsersTable);
@@ -163,22 +151,6 @@ namespace Unicom_TIC_Management_System.Repositories
                 cmd.ExecuteNonQuery();
             }
         }
-
-
-        /*
-        public static bool IsAdminRegistered()
-        {
-            using (var conn = dbConfig.GetConnection())
-            {
-                string query = "SELECT COUNT(*) FROM Users WHERE Role = 'Admin'";
-                using (var cmd = new SQLiteCommand(query, conn))
-                {
-                    long count = (long)cmd.ExecuteScalar();
-                    return count > 0;   
-                }
-            }
-        } */
-
 
     }
 }

@@ -25,7 +25,7 @@ namespace Unicom_TIC_Management_System.View
             this.role = role;
 
         }
-
+        //  Loads ourses from the database into DataGridView
         private void CourseControl_Load(object sender, EventArgs e)
         {
             LoadCourses();
@@ -51,9 +51,9 @@ namespace Unicom_TIC_Management_System.View
                 
             };
 
-            CourseController.AddCourse(course);
-            LoadCourses();
-            ClearFields();
+            CourseController.AddCourse(course);  // sav3e to DB
+            LoadCourses();                  // refreshes table
+            ClearFields();                  // reset input
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -94,6 +94,7 @@ namespace Unicom_TIC_Management_System.View
            
         }
 
+        // Populatesform fields when a row is clicked
         private void dgvCourses_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -105,12 +106,13 @@ namespace Unicom_TIC_Management_System.View
 
         }
 
+        // Back button returns to AdminHomeControl
         private void btnBack_Click(object sender, EventArgs e)
         {
             var parentForm = this.FindForm() as AdminDashboard;
             if (parentForm != null)
             {
-                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                var homeControl = new AdminHomeControl(userId, role); 
                 parentForm.LoadControlInPanel(homeControl);
             }
 

@@ -93,7 +93,7 @@ namespace Unicom_TIC_Management_System.View
 
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // Make sure the row index is valid
+            if (e.RowIndex >= 0) 
             {
                 DataGridViewRow row = dgvUsers.Rows[e.RowIndex];
 

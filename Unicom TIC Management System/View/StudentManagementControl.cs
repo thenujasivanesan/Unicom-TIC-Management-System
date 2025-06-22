@@ -35,7 +35,7 @@ namespace Unicom_TIC_Management_System.View
             LoadUsers();
         }
 
-
+        // Load only users with role Student who are not already assigned in Students table
         private void LoadUsers(int? selectedUserId = null)
         {
             using (var conn = dbConfig.GetConnection())
@@ -180,7 +180,7 @@ namespace Unicom_TIC_Management_System.View
             {
                 DataGridViewRow row = dgvStudents.Rows[e.RowIndex];
                 int selectedUserId = Convert.ToInt32(row.Cells["UserId"].Value);
-                LoadUsers(selectedUserId);  // Reload users to include this one for editing
+                LoadUsers(selectedUserId);  
 
 
 
@@ -226,7 +226,7 @@ namespace Unicom_TIC_Management_System.View
             var parentForm = this.FindForm() as AdminDashboard;
             if (parentForm != null)
             {
-                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                var homeControl = new AdminHomeControl(userId, role);  
                 parentForm.LoadControlInPanel(homeControl);
             }
         }

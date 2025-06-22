@@ -13,10 +13,8 @@ namespace Unicom_TIC_Management_System.Controllers
 {
     internal class TimetableController
     {
-        // ✅ Add a new timetable entry
         public static void AddTimetable(Timetable timetable)
         {
-            // 🔍 Basic validation
             if (timetable.SubjectID == 0)
             {
                 MessageBox.Show("Please select a subject.", "Validation Error");
@@ -63,7 +61,6 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // ✅ Update existing timetable entry
         public static void UpdateTimetable(Timetable timetable)
         {
             if (timetable.TimetableID == 0)
@@ -102,7 +99,6 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // ✅ Delete timetable entry
         public static void DeleteTimetable(int timetableId)
         {
             if (timetableId == 0)
@@ -129,7 +125,7 @@ namespace Unicom_TIC_Management_System.Controllers
             }
         }
 
-        // ✅ Get all timetable entries with JOIN info (Subject, Room)
+        // get all timetable entries with JOIN info 
         public static DataTable GetAllTimetables()
         {
             var dt = new DataTable();

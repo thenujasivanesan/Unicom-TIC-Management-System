@@ -14,7 +14,6 @@ namespace Unicom_TIC_Management_System.Controllers
     {
         public static void AddLecturer(Lecturer lecturer)
         {
-            // Validate all important fields
             if (lecturer.UserId <= 0)
             {
                 MessageBox.Show("Please select a valid user.", "Validation Error");
@@ -63,7 +62,6 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("Error adding lecturer: " + ex.Message, "Database Error");
             }
         }
-
         public static void UpdateLecturer(Lecturer lecturer)
         {
             if (string.IsNullOrEmpty(lecturer.FirstName) || string.IsNullOrEmpty(lecturer.LastName))
@@ -122,7 +120,6 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("Error deleting lecturer: " + ex.Message, "Database Error");
             }
         }
-
         public static List<Lecturer> GetAllLecturers()
         {
             var list = new List<Lecturer>();
@@ -158,7 +155,6 @@ namespace Unicom_TIC_Management_System.Controllers
 
             return list;
         }
-
         public static Lecturer GetLecturerByUserId(int userId)
         {
             try
@@ -195,7 +191,8 @@ namespace Unicom_TIC_Management_System.Controllers
 
             return null;
         }
-
+        
+        // this helper method checks if the email format is valid
         private static bool IsValidEmail(string email)
         {
             try

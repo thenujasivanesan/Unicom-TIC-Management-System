@@ -107,6 +107,7 @@ namespace Unicom_TIC_Management_System.Controllers
             {
                 using (var conn = dbConfig.GetConnection())
                 {
+                    // Select query with INNER JOIN to get exam and subject infos
                     string query = @"
                     SELECT Exams.ExamId, Exams.ExamName, Subjects.SubjectName 
                     FROM Exams 

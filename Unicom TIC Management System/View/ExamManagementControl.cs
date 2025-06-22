@@ -19,6 +19,7 @@ namespace Unicom_TIC_Management_System.View
         private int userId;
         private string role;
 
+        // Constructor receives logged-in user ID and role
         public ExamManagementControl(int userId, string role)
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace Unicom_TIC_Management_System.View
         {
             if (role == "Student" || role == "Lecturer")
             {
-                // View-only mode: hide editing controls
+                // View-only mode: ide editing controls
                 btnAddExam.Visible = false;
                 btnUpdateExam.Visible = false;
                 btnDeleteExam.Visible = false;
@@ -45,7 +46,7 @@ namespace Unicom_TIC_Management_System.View
             LoadExams();
         }
 
-
+        // Loads subjects into ComboBox
         private void LoadSubjects()
         {
             cmbSubject.Items.Clear();
@@ -161,7 +162,7 @@ namespace Unicom_TIC_Management_System.View
             var parentForm = this.FindForm() as AdminDashboard;
             if (parentForm != null)
             {
-                var homeControl = new AdminHomeControl(userId, role); // pass the same userId & role
+                var homeControl = new AdminHomeControl(userId, role); 
                 parentForm.LoadControlInPanel(homeControl);
             }
         }

@@ -12,7 +12,6 @@ namespace Unicom_TIC_Management_System.Controllers
 {
     internal class RoomController
     {
-        // Add Room
         public static void AddRoom(Room room)
         {
             if (string.IsNullOrWhiteSpace(room.RoomName))
@@ -45,8 +44,6 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("Error adding room: " + ex.Message, "Database Error");
             }
         }
-
-        // Update Room
         public static void UpdateRoom(Room room)
         {
             if (string.IsNullOrWhiteSpace(room.RoomName))
@@ -80,8 +77,6 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("Error updating room: " + ex.Message, "Database Error");
             }
         }
-
-        // Delete Room
         public static void DeleteRoom(int roomId)
         {
             try
@@ -101,8 +96,6 @@ namespace Unicom_TIC_Management_System.Controllers
                 MessageBox.Show("Error deleting room: " + ex.Message, "Database Error");
             }
         }
-
-        // Get All Rooms
         public static List<Room> GetAllRooms()
         {
             List<Room> rooms = new List<Room>();
