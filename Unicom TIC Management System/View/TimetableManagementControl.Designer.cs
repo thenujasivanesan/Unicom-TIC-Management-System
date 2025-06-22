@@ -39,7 +39,7 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.dgvTimetable = new System.Windows.Forms.DataGridView();
             this.txtTimeSlot = new System.Windows.Forms.TextBox();
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
+            this.dtpTimetable = new System.Windows.Forms.DateTimePicker();
             this.lblDate = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimetable)).BeginInit();
@@ -179,15 +179,15 @@
             this.txtTimeSlot.TabIndex = 6;
             this.txtTimeSlot.TextChanged += new System.EventHandler(this.txtTimeSlot_TextChanged);
             // 
-            // datePicker
+            // dtpTimetable
             // 
-            this.datePicker.CustomFormat = "yyyy-MM-dd";
-            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datePicker.Location = new System.Drawing.Point(469, 426);
-            this.datePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(200, 22);
-            this.datePicker.TabIndex = 7;
+            this.dtpTimetable.CustomFormat = "yyyy-MM-dd";
+            this.dtpTimetable.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpTimetable.Location = new System.Drawing.Point(469, 426);
+            this.dtpTimetable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpTimetable.Name = "dtpTimetable";
+            this.dtpTimetable.Size = new System.Drawing.Size(200, 22);
+            this.dtpTimetable.TabIndex = 7;
             // 
             // lblDate
             // 
@@ -205,7 +205,7 @@
             this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnBack.Location = new System.Drawing.Point(746, 593);
+            this.btnBack.Location = new System.Drawing.Point(735, 581);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(90, 30);
             this.btnBack.TabIndex = 8;
@@ -218,7 +218,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.datePicker);
+            this.Controls.Add(this.dtpTimetable);
             this.Controls.Add(this.txtTimeSlot);
             this.Controls.Add(this.dgvTimetable);
             this.Controls.Add(this.btnClear);
@@ -254,7 +254,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.DataGridView dgvTimetable;
         private System.Windows.Forms.TextBox txtTimeSlot;
-        private System.Windows.Forms.DateTimePicker datePicker;
+        private System.Windows.Forms.DateTimePicker dtpTimetable;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Button btnBack;
     }

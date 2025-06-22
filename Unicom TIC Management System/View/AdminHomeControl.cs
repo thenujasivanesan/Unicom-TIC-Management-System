@@ -38,11 +38,11 @@ namespace Unicom_TIC_Management_System.View
             }
             else if (role == "Lecturer")
             {
-                ShowLecturerSummary();
+                ShowLecturerInfo();
             }
             else if (role == "Staff")
             {
-                ShowStaffSummary();
+                ShowStaffInfo();
             }
         }
 
@@ -64,83 +64,139 @@ namespace Unicom_TIC_Management_System.View
                 lblSummary.Text = $"📚 Total Students: {totalStudents}\n👨‍🏫 Lecturers: {totalLecturers}\n👩‍💼 Staff: {totalStaff}";
             }
         }
-
-        private void ShowLecturerSummary()
+        private void ShowLecturerInfo()
         {
             using (var conn = dbConfig.GetConnection())
             {
+                string query = @"SELECT FirstName || ' ' || LastName AS FullName, 
+                                Contact, Email, Address
+                         FROM Lecturers WHERE UserId = @userId";
 
-
-                var cmd1 = new SQLiteCommand("SELECT COUNT(*) FROM Students", conn);
-                var totalStudents = Convert.ToInt32(cmd1.ExecuteScalar());
-
-                var cmd2 = new SQLiteCommand("SELECT COUNT(*) FROM Users WHERE Role = 'Lecturer'", conn);
-                var totalLecturers = Convert.ToInt32(cmd2.ExecuteScalar());
-
-                var cmd3 = new SQLiteCommand("SELECT COUNT(*) FROM Users WHERE Role = 'Staff'", conn);
-                var totalStaff = Convert.ToInt32(cmd3.ExecuteScalar());
-
-                lblWelcome.Text = $"Welcome, Lecturer!";
-                lblSummary.Text = $"📚 Total Students: {totalStudents}\n👨‍🏫 Lecturers: {totalLecturers}\n👩‍💼 Staff: {totalStaff}";
-            }
-
-        }
-
-        private void ShowStaffSummary()
-        {
-            using (var conn = dbConfig.GetConnection())
-            {
-
-
-                var cmd1 = new SQLiteCommand("SELECT COUNT(*) FROM Students", conn);
-                var totalStudents = Convert.ToInt32(cmd1.ExecuteScalar());
-
-                var cmd2 = new SQLiteCommand("SELECT COUNT(*) FROM Users WHERE Role = 'Lecturer'", conn);
-                var totalLecturers = Convert.ToInt32(cmd2.ExecuteScalar());
-
-                var cmd3 = new SQLiteCommand("SELECT COUNT(*) FROM Users WHERE Role = 'Staff'", conn);
-                var totalStaff = Convert.ToInt32(cmd3.ExecuteScalar());
-
-                lblWelcome.Text = $"Welcome, Staff!";
-                lblSummary.Text = $"📚 Total Students: {totalStudents}\n👨‍🏫 Lecturers: {totalLecturers}\n👩‍💼 Staff: {totalStaff}";
-            }
-        }
-
-
-
-        private void ShowStudentInfo()
-        {
-            using (var conn = dbConfig.GetConnection())
-            {
-                string query = @"SELECT FirstName || ' ' || LastName AS FullName, Gender, DateOfBirth
-                         FROM Students WHERE UserId = @userId";
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@userId", userId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string name = reader["FullName"].ToString();
+                            string contact = reader["Contact"].ToString();
+                            string email = reader["Email"].ToString();
+                            string address = reader["Address"].ToString();
+
+                            lblWelcome.Text = $"Welcome, {name}!";
+                            lblSummary.Text = $"📞 Contact: {contact}\n📧 Email: {email}\n🏠 Address: {address}";
+                        }
+                        else
+                        {
+                            lblWelcome.Text = "Welcome, Lecturer!";
+                            lblSummary.Text = "Your profile is not set up yet. \nPlease contact the admin.";
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private void ShowStaffInfo()
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                string query = @"
+            SELECT FirstName || ' ' || LastName AS FullName,
+                   Gender,
+                   DateOfBirth,
+                   Contact,
+                   Email,
+                   Address
+            FROM Staff
+            WHERE UserId = @userId";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
+
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
                             string name = reader["FullName"].ToString();
                             string gender = reader["Gender"].ToString();
-                            string dob = reader["DateOfBirth"].ToString();
-                            
+                            string dob = Convert.ToDateTime(reader["DateOfBirth"]).ToString("yyyy-MM-dd");
+                            string contact = reader["Contact"].ToString();
+                            string email = reader["Email"].ToString();
+                            string address = reader["Address"].ToString();
 
                             lblWelcome.Text = $"Welcome, {name}!";
-                            lblSummary.Text = $"Gender: {gender}\nDOB: {dob}";
+                            lblSummary.Text =
+                                $"👥 Gender: {gender}\n" +
+                                $"🗓️ DOB: {dob}\n" +
+                                $"📞 Contact: {contact}\n" +
+                                $"📧 Email: {email}\n" +
+                                $"🏡 Address: {address}";
                         }
+                        else
+                        {
+                            lblWelcome.Text = "Welcome, Staff!";
+                            lblSummary.Text = "Your profile is not set up yet. \nPlease contact the admin.";
+                        }
+                    }
+                }
+            }
+        }
 
+        private void ShowStudentInfo()
+        {
+            using (var conn = dbConfig.GetConnection())
+            {
+                string query = @"
+            SELECT s.FirstName || ' ' || s.LastName AS FullName,
+                   s.Gender,
+                   s.DateOfBirth,
+                   s.Contact,
+                   s.Email,
+                   s.Address,
+                   c.CourseName
+            FROM Students s
+            JOIN Courses c ON s.CourseId = c.CourseId
+            WHERE s.UserId = @userId";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string name = reader["FullName"].ToString();
+                            string gender = reader["Gender"].ToString();
+                            string dob = Convert.ToDateTime(reader["DateOfBirth"]).ToString("yyyy-MM-dd");
+                            string contact = reader["Contact"].ToString();
+                            string email = reader["Email"].ToString();
+                            string address = reader["Address"].ToString();
+                            string course = reader["CourseName"].ToString();
+
+                            lblWelcome.Text = $"Welcome, {name}!";
+                            lblSummary.Text =
+                                $"👥 Gender: {gender}\n" +
+                                $"🗓️ DOB: {dob}\n" +
+                                $"📞 Contact: {contact}\n" +
+                                $"📧 Email: {email}\n" +
+                                $"🏡 Address: {address}\n" +
+                                $"📖 Course: {course}";
+                        }
                         else
                         {
                             lblWelcome.Text = "Welcome, Student!";
                             lblSummary.Text = "Your profile is not set up yet. \nPlease contact the admin.";
                         }
-
                     }
                 }
             }
-
         }
+
 
 
         private void lblWelcome_Click(object sender, EventArgs e)

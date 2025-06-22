@@ -136,7 +136,7 @@
             this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnBack.Location = new System.Drawing.Point(746, 593);
+            this.btnBack.Location = new System.Drawing.Point(736, 584);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(90, 30);
             this.btnBack.TabIndex = 4;

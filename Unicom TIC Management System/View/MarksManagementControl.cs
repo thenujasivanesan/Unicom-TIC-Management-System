@@ -366,6 +366,7 @@ namespace Unicom_TIC_Management_System.View
             cmbStudent.SelectedIndex = -1;
             cmbExam.SelectedIndex = -1;
             txtScore.Text = "";
+            cmbSubject.SelectedIndex = -1;
         }
 
         private void dgvMarks_CellClick(object sender, DataGridViewCellEventArgs e)
