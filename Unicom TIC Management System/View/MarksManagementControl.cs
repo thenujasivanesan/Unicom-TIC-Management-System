@@ -249,7 +249,7 @@ namespace Unicom_TIC_Management_System.View
                 }
             }
         }
-        // Load only the marks associated with the lecturer’s subjects
+        // Loads only the marks associated with the lecturer’s subjects
         private void LoadMarksForLecturer(int lecturerId)
         {
             using (var conn = dbConfig.GetConnection())
@@ -374,6 +374,7 @@ namespace Unicom_TIC_Management_System.View
                 cmbStudent.SelectedValue = Convert.ToInt32(row.Cells["StudentId"].Value);
                 cmbExam.SelectedValue = Convert.ToInt32(row.Cells["ExamId"].Value);
                 txtScore.Text = row.Cells["Score"].Value.ToString();
+                cmbSubject.Text = row.Cells["SubjectName"].Value.ToString();
             }
         }
 
